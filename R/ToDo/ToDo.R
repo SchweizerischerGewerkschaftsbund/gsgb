@@ -35,4 +35,3 @@
 #   scale_fill_gradient2 <- function(...) scale_fill_gradient2_tableau(palette="Classic Orange-Blue")
 #   Anstatt der scale_color_tableau()-Funktion aus dem ggthemes Paket würden wir dann  scale_color_sgb()-Funktion einsetzen.
 
-

@@ -95,7 +95,7 @@ theme_sgb <- function(base_size = 9, base_family = "",
 
       # Titles if you have several plots combined (facet labels)
       strip.background  = element_blank(),
-      strip.text =         ggplot2::element_text(colour = "black", size = ggplot2::rel(1),
+      strip.text =         ggplot2::element_text(colour = "black", size = ggplot2::rel(1), face = "bold",
                                                  margin = ggplot2::margin(half_line, half_line, half_line, half_line)),
 
       # Background and grid
