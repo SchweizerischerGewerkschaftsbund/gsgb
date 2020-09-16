@@ -103,7 +103,7 @@ theme_sgb <- function(base_size = 9, base_family = "",
       panel.border =       ggplot2::element_blank(), # panel border
       panel.grid.major =   ggplot2::element_line(colour = "grey80"), # grey gridlines
       panel.grid.minor =   ggplot2::element_blank(), # only major grid
-      plot.margin =        ggplot2::margin(0, 0, 0, 0), # no margins around plot
+      plot.margin =        ggplot2::margin(half_line/4, half_line/4, half_line/4, half_line/4), # only very small margins around plot
 
       # Plot Title
       plot.title.position =  'plot',
