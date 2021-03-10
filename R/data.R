@@ -7,11 +7,6 @@
 # Bei den Packages wird nicht die gesamte Library geladen, sondern nur die benoetigten
 # Funktionen eines Package direkt mit "package::" aufgerufen.
 
-# Zuerst muessen sie jedoch im NAMESPACE gespeichert werden. Das laesst sich leicht mit
-# roxgen2 (#'import) bewerkstelligen
-#'@import here
-#'@import assertthat
-
 
 # Daten laden -----------------------------
 

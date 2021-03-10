@@ -7,10 +7,10 @@
 scale_fill_discrete(...)
 }
 \arguments{
-\item{...}{}
+\item{...}{Beliebige Parameter die an die Funktion \code{scale_fill_manual()} weitergegeben werden koennen.}
 }
 \value{
-
+see return of \code{scale_fill_manual()}.
 }
 \description{
 Default scale mit SGB-Farben

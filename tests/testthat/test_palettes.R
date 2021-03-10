@@ -20,9 +20,9 @@ testthat::test_that("Unchanged pal_sgb_pref" , {
   testthat::expect_equivalent(
     mycol,
     c("#990000",
-      "#ffc000",
-      "#002060",
       "#00a9e0",
+      "#002060",
+      "#ffc000",
       "#7c7c7c")
   )
 })

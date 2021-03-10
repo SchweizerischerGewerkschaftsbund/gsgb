@@ -7,10 +7,10 @@
 scale_colour_discrete(...)
 }
 \arguments{
-\item{...}{}
+\item{...}{Beliebige Parameter die an die Funktion \code{scale_color_manual()} weitergegeben werden koennen.}
 }
 \value{
-
+see return of \code{scale_color_manual()}.
 }
 \description{
 Default scale mit SGB-Farben
