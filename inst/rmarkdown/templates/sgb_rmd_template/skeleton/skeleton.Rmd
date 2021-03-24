@@ -16,12 +16,13 @@ output:
 ```{r setup, include=FALSE, warnings=FALSE}
 #Load functions and set working directory
 source("I:/ABT1/_Datenablage/3_R-Skripte/SGB_data_prep_functions.R")
-library(knitr) 
+library(gsgb)
+library(knitr)
 library(flextable) #für Word-Tabellen im SGB-Layout
 library(officer)   #für Word-Tabellen im SGB-Layout
 
 #Set up general knitr options
-knitr::opts_chunk$set(echo = TRUE, warning=FALSE, message=FALSE, dpi=600)#, fig.width=4.5, fig.height=3)
+knitr::opts_chunk$set(echo = TRUE, warning=FALSE, message=FALSE, fig.width=3.5, fig.height=2.5, dpi=320)
 # Working directory in knitr (uncomment next line if desired)
 # knitr::opts_knit$set(root.dir="I:/ABT1/_Datenablage/3_R-Skripte/rmarkdown-Vorlagen")
 
@@ -53,7 +54,7 @@ Und hier ein Plot:
 
 ### Plot Titel
 #### (Plot Untertitel)
-```{r plot1, echo=FALSE, fig.height=2.5, fig.width=3.5, fig.cap="Quelle: Fisher, R. A. (1936)"}
+```{r plot1, echo=FALSE, fig.cap="Quelle: Fisher, R. A. (1936)"}
 ggplot(data=iris,aes(x=Sepal.Length, y=Sepal.Width, col=Species)) + 
   geom_point()+
   labs(x="Length",y="Width")+
