@@ -54,7 +54,7 @@
 #' ## Saeulen gestapelt (bar) ----
 #' ggplot(mpg, aes(manufacturer, fill = fl)) +
 #'   geom_bar(position = "stack") +
-#'   scale_fill_manual(values = usecol(pal = rev(c(pal_sgb_pref)), n = 5)) +
+#'   scale_fill_manual(values = rev(usecol(pal = pal_sgb_pref, n = 5))) +
 #'   theme_sgb() +
 #'   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 #'
@@ -103,7 +103,7 @@
 #'   theme_sgb() +
 #'   theme(axis.title = element_blank())
 #'
-#' ## Punkte continous ----
+#' ## Punkte continuous ----
 #' ggplot(iris, aes(Sepal.Width, Sepal.Length, color = Sepal.Length)) +
 #'   geom_point(size = 2) +
 #'   scale_color_gradientn(colours = usecol(pal = pal_sgb_rot)) +
@@ -111,6 +111,7 @@
 #'   theme(axis.title = element_blank())
 #'
 #' }
+#'
 #'
 #' @family plot functions
 #'

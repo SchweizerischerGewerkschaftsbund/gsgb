@@ -245,13 +245,12 @@ getpal_key <- function(pal = "all", n = "all", alpha = NA) {
   is_pal <- lapply(
     lst_pal,
     FUN = function(x) {
-      if ( !typeof(x) %in% c("vector", "list") ) {
-        is_color <- FALSE
+      if (all(isHexCol(color = x))) {
+        is_color <- TRUE
       } else {
-        is_color <- isHexCol(color = x)
+        is_color <- FALSE
       }
       return(all(is_color))  # are all entries colors?
-
     }
   )
 

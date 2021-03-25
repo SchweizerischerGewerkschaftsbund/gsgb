@@ -39,7 +39,7 @@
 #' \code{\link{usecol}} um die Farbpaletten zu verwenden.
 #'
 #' @export
-pal_sgb_web <- data.frame(
+pal_sgb_web <- c(
   "rot1" = '#fdc0b0',
   "rot2" = '#eb836a',
   "rot3" = '#cb452c',
@@ -49,8 +49,7 @@ pal_sgb_web <- data.frame(
   "grau2" = '#a6a6a6',
   "grau3" = '#7c7c7c',
   "grau4" = '#545454',
-  "schwarz" = '#000000',
-  stringsAsFactors = FALSE)
+  "schwarz" = '#000000')
 
 # Sinnvoll geordnete Version:
 pal_sgb_web <- pal_sgb_web[c(4:1, 5:10)] # rot (4 as default) > weiss (5) > grau > schwarz (10)
@@ -90,13 +89,12 @@ pal_sgb_web <- pal_sgb_web[c(4:1, 5:10)] # rot (4 as default) > weiss (5) > grau
 #' \code{\link{usecol}} um die Farbpaletten zu verwenden.
 #'
 #' @export
-pal_sgb_rot <- data.frame(
+pal_sgb_rot <- c(
   "rot1" = '#fdc0b0',
   "rot2" = '#eb836a',
   "rot3" = '#cb452c',
   "rot4" = '#990000',
-  "rot5" = '#660000',
-  stringsAsFactors = FALSE)
+  "rot5" = '#660000')
 
 #   (b) Bevorzugte Farbe SGBrot (als HEX character value): ----
 
@@ -159,13 +157,12 @@ names(SGBrot) <- "SGBrot"
 #'
 #' @export
 
-pal_sgb_gelb <- data.frame(
+pal_sgb_gelb <- c(
   "gelb1" = '#fff3d9',
   "gelb2" = '#ffe7b2',
   "gelb3" = '#ffdb88',
   "gelb4" = '#ffce58',
-  "gelb5" = '#ffc000',
-  stringsAsFactors = FALSE)
+  "gelb5" = '#ffc000')
 
 
 #   (b) Bevorzugte Farbe SGBgelb (als HEX character value): ----
@@ -229,13 +226,12 @@ names(SGBgelb) <- "SGBgelb"
 #'
 #' @export
 
-pal_sgb_dunkelblau <- data.frame(
+pal_sgb_dunkelblau <- c(
   "dunkelblau1" = '#cecdde',
   "dunkelblau2" = '#9f9dbd',
   "dunkelblau3" = '#71709e',
   "dunkelblau4" = '#42467e',
-  "dunkelblau5" = '#002060',
-  stringsAsFactors = FALSE)
+  "dunkelblau5" = '#002060')
 
 
 #   (b) Bevorzugte Farbe SGBdunkelblau (als HEX character value): ----
@@ -299,13 +295,12 @@ names(SGBdunkelblau) <- "SGBdunkelblau"
 #'
 #' @export
 
-pal_sgb_hellblau <- data.frame(
+pal_sgb_hellblau <- c(
   "hellblau1" = '#dcedf9',
   "hellblau2" = '#b8dcf3',
   "hellblau3" = '#91cbed',
   "hellblau4" = '#63bae6',
-  "hellblau5" = '#00a9e0',
-  stringsAsFactors = FALSE)
+  "hellblau5" = '#00a9e0')
 
 
 #   (b) Bevorzugte Farbe SGBhellblau (als HEX character value): ----
@@ -369,13 +364,12 @@ names(SGBhellblau) <- "SGBhellblau"
 #'
 #' @export
 
-pal_sgb_grau <- data.frame(
+pal_sgb_grau <- c(
   "grau1" = '#d1d1d1',
   "grau2" = '#a6a6a6',
   "grau3" = '#7c7c7c',
   "grau4" = '#545454',
-  "grau5" = '#303030',
-  stringsAsFactors = FALSE)
+  "grau5" = '#303030')
 
 #   (b) Bevorzugte Farbe SGBgrau (als HEX character value): ----
 
@@ -437,9 +431,8 @@ names(SGBgrau) <- "SGBgrau"
 #' \code{\link{usecol}} um die Farbpaletten zu verwenden.
 #'
 #' @export
-pal_sgb_signal <- data.frame(
+pal_sgb_signal <- c(
   "signal1" = '#990000',
   "signal2" = '#ffc000',
-  "signal3" = '#699903',
-  stringsAsFactors = FALSE)
+  "signal3" = '#699903')
 

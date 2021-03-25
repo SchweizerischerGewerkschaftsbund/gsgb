@@ -40,7 +40,7 @@
 #' \code{\link{usecol}} um die Farbpaletten zu verwenden.
 #'
 #' @export
-pal_sgb <- cbind(rev(pal_sgb_rot), pal_sgb_web[5:10])
+pal_sgb <- c(rev(pal_sgb_rot), pal_sgb_web[5:10])
 
 
 
@@ -66,13 +66,12 @@ pal_sgb <- cbind(rev(pal_sgb_rot), pal_sgb_web[5:10])
 #'
 #' @export
 
-pal_sgb_pref <- data.frame(
+pal_sgb_pref <- c(
   "SGBrot"        = SGBrot,
   "SGBhellblau"   = SGBhellblau,
   "SGBdunkelblau" = SGBdunkelblau,
   "SGBgelb"       = SGBgelb,
-  "SGBgrau"       = SGBgrau,
-  stringsAsFactors = FALSE)
+  "SGBgrau"       = SGBgrau)
 
 
 #  (3) pal_sgb_pair: Palette mit 10 gepaarten Farben (in 5 Paaren): ------
@@ -98,13 +97,12 @@ pal_sgb_pref <- data.frame(
 #'
 #' @export
 
-pal_sgb_pair <- data.frame(
+pal_sgb_pair <- c(
   pal_sgb_rot[c(4, 2)],
   pal_sgb_hellblau[c(5, 3)],
   pal_sgb_dunkelblau[c(5, 3)],
   pal_sgb_gelb[c(5, 3)],
-  pal_sgb_grau[c(5, 3)],
-  stringsAsFactors = FALSE)
+  pal_sgb_grau[c(5, 3)])
 
 
 
