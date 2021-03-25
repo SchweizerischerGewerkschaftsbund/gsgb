@@ -1,0 +1,4 @@
+name: SGB Template Word
+description: Dieses Template erstellt eine R-Markdown-Datei mit den Standardeinstellungen des SGB für Word-Dateien. 
+             Bis jetzt funktioniert das Template nur auf dem RDS-Server, da die verwendeten Files direkt angesteuert werden. 
+              
