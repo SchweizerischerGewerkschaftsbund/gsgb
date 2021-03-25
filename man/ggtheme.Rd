@@ -6,7 +6,7 @@
 \title{Standard SGB-Themes fuer ggplot2}
 \usage{
 theme_sgb(
-  base_size = 9,
+  base_size = 8,
   base_family = "",
   base_line_size = base_size/22,
   base_rect_size = base_size/22
@@ -21,7 +21,7 @@ theme_sgb_blank(
 }
 \arguments{
 \item{base_size}{Standard Schriftgroesse (optional, numeric).
-Default: \code{base_size = 12}.}
+Default: \code{base_size = 8}.}
 
 \item{base_family}{Standard Schriftart (optional, character).
 Default: \code{base_family = ""}.}
@@ -62,7 +62,7 @@ Geeignet etwa fuer Kuchendiagramme.
      geom_point(aes(Sepal.Width, Sepal.Length, color = Species),
        size = 2) +
      scale_color_manual(values = usecol(pal = pal_sgb_pref, n = 3)) +
-     theme_sgb(base_size = 8) +
+     theme_sgb(base_size = 10) +
      theme(axis.title.y = element_blank()) # manually remove y-Axis title
 }
 
