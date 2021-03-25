@@ -17,6 +17,7 @@ library(ggplot2)
 #' This function wraps around the ggsave function of gglpot2 (\link[ggplot2]{ggsave}) by setting the defaults to the SGB standard output.
 #'
 #' @param filename see documentation of \link[ggplot2]{ggsave}
+#' @param wide boolean (default = FALSE), if TRUE widens the plot to width = 6.5 and height = 4.5
 #' @param plot see documentation of \link[ggplot2]{ggsave}
 #' @param device see documentation of \link[ggplot2]{ggsave}
 #' @param path see documentation of \link[ggplot2]{ggsave}
@@ -34,6 +35,7 @@ library(ggplot2)
 #' @examples
 #' ggsave("my_sgb_plot.png")
 ggsave <- function(filename,
+                   wide = FALSE,
                    plot = last_plot(),
                    device = NULL,
                    path = NULL,
@@ -41,9 +43,14 @@ ggsave <- function(filename,
                    width = 3.5,
                    height = 2.5,
                    units = "in",
-                   dpi = "retina",
+                   dpi = 600,
                    limitsize = TRUE,
                    ...) {
+
+  if (wide) {
+    width <- 6.5
+    height <- 4.5
+  }
   ggplot2::ggsave(filename = filename,
                   plot = plot,
                   device = device,

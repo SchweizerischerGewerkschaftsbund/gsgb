@@ -4,3 +4,5 @@
 ^/docs$
 ^R unikn$
 ^R/ToDo$
+^Thumbs\.db$
+^my_sgb_plot\.png$
