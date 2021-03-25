@@ -19,12 +19,12 @@ library(flextable) #für Word-Tabellen im SGB-Layout
 library(officer)   #für Word-Tabellen im SGB-Layout
 
 #Set up general knitr options
-knitr::opts_chunk$set(echo = TRUE, warning=FALSE, message=FALSE, fig.width=3.5, fig.height=2.5, dpi=320)
+knitr::opts_chunk$set(echo = TRUE, warning=FALSE, message=FALSE, fig.width=3.5, fig.height=2.5, dpi=600)
 # Working directory in knitr (uncomment next line if desired)
 # knitr::opts_knit$set(root.dir="I:/ABT1/_Datenablage/3_R-Skripte/rmarkdown-Vorlagen")
 
 # Set SGB ggplot theme
-th <- theme_sgb(base_size = 8)
+th <- theme_sgb()
 theme_set(th)
 
 # flextable SGB theme function
