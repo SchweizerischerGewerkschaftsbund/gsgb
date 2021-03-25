@@ -25,7 +25,7 @@
 #'   theme_sgb(base_size = 9) + # hoehere Zahl, um global alle Elemente zu vergroessern
 #'   theme(axis.title = element_blank())
 #'
-#' ggsave( "docs/lineplot.jpeg", width = 15.5, height = 7, units = "cm", dpi = "retina")
+#' ggsave( "docs/lineplot.jpeg", width = 15.5, height = 7, units = "cm")
 #'
 #' ## Linien mit 4 Variablen, im EMF-Format sichern ----
 #' # (emf ist ein Vektorformat, das von Word akzeptiert wird)
@@ -58,6 +58,8 @@
 #'   theme_sgb() +
 #'   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 #'
+#' ggsave("docs/stack_bar.jpeg", wide = TRUE)
+#'
 #' ## Kuchen, theme_sgb_minimal ----
 #' # Beispieldaten generieren:
 #' library(magrittr)
@@ -83,6 +85,9 @@
 #'     legend.direction =   "vertical",
 #'     legend.justification = c("right", "center"))
 #'
+#  ggsave("docs/pie_chart.jpeg", wide = TRUE)
+#'
+#'
 #' ## Gestapeltes Flaechendiagramm ----
 #' df2 <- data.frame(
 #'   time = as.numeric(rep(seq(1, 5), each = 5)),
@@ -95,6 +100,9 @@
 #'   theme_sgb(base_size = 12) +
 #'   theme(axis.title.y = element_blank())
 #'
+#' ggsave("docs/stacked_area.jpeg", wide = TRUE)
+#'
+#'
 #' ## Punkte discrete ----
 #' ggplot(iris, aes(Sepal.Width, Sepal.Length, color = Species)) +
 #'   geom_point(size = 2) +
@@ -103,12 +111,18 @@
 #'   theme_sgb() +
 #'   theme(axis.title = element_blank())
 #'
+#' ggsave("docs/scatterplot.jpeg")
+#' ggsave("docs/scatterplot_wide.jpeg", wide = TRUE)
+#'
+#'
 #' ## Punkte continous ----
 #' ggplot(iris, aes(Sepal.Width, Sepal.Length, color = Sepal.Length)) +
 #'   geom_point(size = 2) +
 #'   scale_color_gradientn(colours = usecol(pal = pal_sgb_rot)) +
 #'   theme_sgb() +
 #'   theme(axis.title = element_blank())
+#'
+#' ggsave("docs/scatter_continous_wide.jpeg", wide = TRUE)
 #'
 #' }
 #'
