@@ -20,7 +20,10 @@ Suggests:
     devEMF,
     dplyr,
     scales,
-    magrittr
+    magrittr,
+    gridExtra,
+    flextable, 
+    officer
 Encoding: UTF-8
 LazyData: true
 License: GPL-3 + file LICENSE
