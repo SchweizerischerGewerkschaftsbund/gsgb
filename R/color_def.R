@@ -1,14 +1,8 @@
-## color_def_1.R | gsgb
-## SGB | 08.04.2020
-## ---------------------------
+# Definition SGB-Farben und Farbpaletten
+# Autorin: Kristina Schuepbach
+# Stand: 14.04.2021
 
-## SGB-Farben und Farbpaletten definieren (1 von 2).
-
-# Farbpaletten: ------
-
-# (A) Basic Farbpaletten: -----
-
-#   (1) SGB Standard-Farbpalette (web/sRGB): ----
+# (1) SGB Standard-Farbpalette (web/sRGB): ----
 
 #' SGB Standard-Farbpalette (10 Farben, web)
 #'
@@ -50,17 +44,9 @@ pal_sgb_web <- data.frame(
   "grau3" = '#7c7c7c',
   "grau4" = '#545454',
   "schwarz" = '#000000',
-  stringsAsFactors = FALSE)
+  stringsAsFactors = FALSE)[c(4:1, 5:10)] # rot (4 as default) > weiss (5) > grau > schwarz (10)
 
-# Sinnvoll geordnete Version:
-pal_sgb_web <- pal_sgb_web[c(4:1, 5:10)] # rot (4 as default) > weiss (5) > grau > schwarz (10)
-
-
-# (B) Zusaetzliche SGB Farbpaletten: -----
-
-#  (1) Rot: -----
-
-#   (a) Palette: ----
+#  (1) Rot Palette: -----
 
 #' Rote SGB-Farbpalette
 #'
@@ -98,7 +84,7 @@ pal_sgb_rot <- data.frame(
   "rot5" = '#660000',
   stringsAsFactors = FALSE)
 
-#   (b) Bevorzugte Farbe SGBrot (als HEX character value): ----
+# Rote SGB-Farbe ----
 
 #' Rote SGB-Farbe
 #'
@@ -122,13 +108,9 @@ pal_sgb_rot <- data.frame(
 #'
 #' @export
 SGBrot <- pal_sgb_rot[[4]]  # HEX Farbwert von rot4
-
 names(SGBrot) <- "SGBrot"
 
-
-#  (2) gelb: -----
-
-#   (a) Palette: ----
+# Gelb Palette: ----
 
 #' Gelbe SGB-Palette
 #'
@@ -158,7 +140,6 @@ names(SGBrot) <- "SGBrot"
 #' \code{\link{usecol}} um die Farbpaletten zu verwenden.
 #'
 #' @export
-
 pal_sgb_gelb <- data.frame(
   "gelb1" = '#fff3d9',
   "gelb2" = '#ffe7b2',
@@ -168,7 +149,7 @@ pal_sgb_gelb <- data.frame(
   stringsAsFactors = FALSE)
 
 
-#   (b) Bevorzugte Farbe SGBgelb (als HEX character value): ----
+# Gelb Farbe: ----
 
 #' Gelbe SGB-Farbe
 #'
@@ -192,13 +173,10 @@ pal_sgb_gelb <- data.frame(
 #'
 #' @export
 SGBgelb <- pal_sgb_gelb[[5]]  # HEX Farbwert von gelb5
-
 names(SGBgelb) <- "SGBgelb"
 
 
-#  (3) dunkelblau: -----
-
-#   (a) Palette: ----
+# Dunkelblau Palette: -----
 
 #' Dunkelblaue SGB-Palette
 #'
@@ -228,7 +206,6 @@ names(SGBgelb) <- "SGBgelb"
 #' \code{\link{usecol}} um die Farbpaletten zu verwenden.
 #'
 #' @export
-
 pal_sgb_dunkelblau <- data.frame(
   "dunkelblau1" = '#cecdde',
   "dunkelblau2" = '#9f9dbd',
@@ -238,7 +215,7 @@ pal_sgb_dunkelblau <- data.frame(
   stringsAsFactors = FALSE)
 
 
-#   (b) Bevorzugte Farbe SGBdunkelblau (als HEX character value): ----
+# Dunkelblau Farbe: ----
 
 #' Dunkelblaue SGB-Farbe
 #'
@@ -262,15 +239,11 @@ pal_sgb_dunkelblau <- data.frame(
 #'
 #' @export
 SGBdunkelblau <- pal_sgb_dunkelblau[[5]]  # HEX Farbwert von dunkelblau5
-
 names(SGBdunkelblau) <- "SGBdunkelblau"
 
+# Hellblau Palette: ----
 
-#  (4) hellblau: -----
-
-#   (a) Palette: ----
-
-#' Dunkelblaue SGB-Palette
+#' Hellblaue SGB-Palette
 #'
 #' \code{pal_sgb_hellblau} ist eine zusaetzliche SGB-Farbpalette als data frame mit 5 Farben
 #' (Abstufungen von \code{\link{SGBhellblau}}).
@@ -298,7 +271,6 @@ names(SGBdunkelblau) <- "SGBdunkelblau"
 #' \code{\link{usecol}} um die Farbpaletten zu verwenden.
 #'
 #' @export
-
 pal_sgb_hellblau <- data.frame(
   "hellblau1" = '#dcedf9',
   "hellblau2" = '#b8dcf3',
@@ -308,7 +280,7 @@ pal_sgb_hellblau <- data.frame(
   stringsAsFactors = FALSE)
 
 
-#   (b) Bevorzugte Farbe SGBhellblau (als HEX character value): ----
+# Hellblau Farbe ----
 
 #' Hellblaue SGB-Farbe
 #'
@@ -332,13 +304,10 @@ pal_sgb_hellblau <- data.frame(
 #'
 #' @export
 SGBhellblau <- pal_sgb_hellblau[[5]]  # HEX Farbwert von hellblau5
-
 names(SGBhellblau) <- "SGBhellblau"
 
 
-#  (5) grau: -----
-
-#   (a) Palette: ----
+# Grau Palette: ----
 
 #' Graue SGB-Palette
 #'
@@ -368,7 +337,6 @@ names(SGBhellblau) <- "SGBhellblau"
 #' \code{\link{usecol}} um die Farbpaletten zu verwenden.
 #'
 #' @export
-
 pal_sgb_grau <- data.frame(
   "grau1" = '#d1d1d1',
   "grau2" = '#a6a6a6',
@@ -377,7 +345,7 @@ pal_sgb_grau <- data.frame(
   "grau5" = '#303030',
   stringsAsFactors = FALSE)
 
-#   (b) Bevorzugte Farbe SGBgrau (als HEX character value): ----
+# Grau Farbe: ----
 
 #' Graue SGB-Farbe
 #'
@@ -401,11 +369,10 @@ pal_sgb_grau <- data.frame(
 #'
 #' @export
 SGBgrau <- pal_sgb_grau[[3]]  # HEX Farbwert von grau4
-
 names(SGBgrau) <- "SGBgrau"
 
 
-#  (6) Ampeltoene: pal_signal -----
+# Ampel Palette -----
 
 #' Ampel SGB-Palette
 #'
@@ -442,4 +409,110 @@ pal_sgb_signal <- data.frame(
   "signal2" = '#ffc000',
   "signal3" = '#699903',
   stringsAsFactors = FALSE)
+
+# pal_sgb: SGB-Standard-Farbpalette rot/grau ------
+
+#' SGB Standard-Farbpalette (11 colors).
+#'
+#' \code{pal_sgb} kombiniert die 5 roten Farben der
+#' Farbpalette \code{\link{pal_sgb_rot}}
+#' mit den 6 nicht-roten Farben von \code{\link{pal_sgb}}
+#' zu einer Palette mit 11 Farbwerten. Damit ist \code{weiss}
+#' in der Mitte der Palette. Das ist hilfreich, wenn Gradienten
+#' verwendet werden.
+#'
+#' @examples
+#' pal_sgb
+#'
+#' # Auswahl nach Position
+#' pal_sgb[1]    # Farbname "rot5" (as df)
+#' pal_sgb[[1]]  # Farbwert "#660000"
+#'
+#' # Auswahl nach Name
+#' pal_sgb["rot5"]   # Farbname "rot5" (as df)
+#' pal_sgb[["rot5"]] # Farbwert "#660000"
+#'
+#' # Palette plotten:
+#' seecol(pal_sgb)
+#'
+#' @family color palettes
+#'
+#' @seealso
+#' \code{\link{pal_sgb}} fuer die SGB Standard-Farbpalette mit allen 5 Farben von \code{\link{pal_sgb_rot}};
+#' \code{\link{pal_sgb_rot}} fuer die rote SGB-Farbpalette;
+#' \code{\link{seecol}} um die Farbpaletten anzusehen;
+#' \code{\link{usecol}} um die Farbpaletten zu verwenden.
+#'
+#' @export
+pal_sgb <- cbind(rev(pal_sgb_rot), pal_sgb_web[5:10])
+
+# pal_sgb_pref: SGB-Standard-Farbpalette alle Farben ------
+
+#' Bevorzugte SGB-Farben in einer Farbpalette
+#'
+#' \code{pal_sgb_pref} ist eine zusaetzliche SGB-Farbpalette
+#' mit allen bevorzugten SGB-Farben (rot, hellblau, dunkelblau, gelb, grau).
+#'
+#' @examples
+#' pal_sgb_pref
+#'
+#' # Palette plotten:
+#' seecol(pal_sgb_pref)
+#'
+#' @family color palettes
+#'
+#' @seealso
+#' \code{\link{pal_sgb}} fuer die SGB Standard-Farbpalette mit allen 5 Farben von \code{\link{pal_sgb_rot}};
+#' \code{\link{seecol}} um die Farbpaletten anzusehen;
+#' \code{\link{usecol}} um die Farbpaletten zu verwenden.
+#'
+#' @export
+pal_sgb_pref <- data.frame(
+  "SGBrot"        = SGBrot,
+  "SGBhellblau"   = SGBhellblau,
+  "SGBdunkelblau" = SGBdunkelblau,
+  "SGBgelb"       = SGBgelb,
+  "SGBgrau"       = SGBgrau,
+  stringsAsFactors = FALSE)
+
+
+# pal_sgb_pair: Palette mit 10 gepaarten Farben (in 5 Paaren): ------
+
+#' Paarweise SGB-Farben in einer Farbpalette
+#'
+#' \code{pal_sgb_pref} ist eine zusaetzliche SGB-Farbpalette, welche die
+#' 5 SGB-Farben (rot, hellblau, dunkelblau, gelb, grau) in 10 Paaren zusammenstellt.
+#'
+#' @examples
+#' pal_sgb_pair
+#'
+#' # Palette plotten:
+#' seecol(pal_sgb_pair)
+#'
+#' @family color palettes
+#'
+#' @seealso
+#' \code{\link{pal_sgb}} fuer die SGB Standard-Farbpalette mit allen 5 Farben von \code{\link{pal_sgb_rot}};
+#' \code{\link{pal_sgb_rot}} fuer die rote SGB-Farbpalette;
+#' \code{\link{seecol}} um die Farbpaletten anzusehen;
+#' \code{\link{usecol}} um die Farbpaletten zu verwenden.
+#'
+#' @export
+pal_sgb_pair <- data.frame(
+  pal_sgb_rot[c(4, 2)],
+  pal_sgb_hellblau[c(5, 3)],
+  pal_sgb_dunkelblau[c(5, 3)],
+  pal_sgb_gelb[c(5, 3)],
+  pal_sgb_grau[c(5, 3)],
+  stringsAsFactors = FALSE)
+
+
+
+## Lookup list of palettes: ----------
+all_palsgb_basic <- c("pal_sgb", "pal_sgb_web")
+all_palsgb_pair <- c("pal_sgb_pair")
+all_palsgb_grad <- c("pal_sgb_rot", "pal_sgb_gelb", "pal_sgb_dunkelblau", "pal_sgb_hellblau", "pal_sgb_grau")
+all_palsgb_pref <- c("pal_sgb_pref", all_palsgb_grad)
+all_palsgb <- c(all_palsgb_basic, all_palsgb_pair, all_palsgb_pref)
+
 
