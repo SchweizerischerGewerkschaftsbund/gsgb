@@ -3,12 +3,12 @@
 ## ---------------------------
 
 library(ggplot2)
-theme_set(theme_sgb())
+theme_set(theme_sgb(base_size = 10))
 
 testthat::context("Teste ob Standardplots ohne Error funktionieren")
 
 testthat::test_that("No error with geom_line" , {
-  p <- ggplot(kof) +
+p <- ggplot(kof) +
     geom_line(aes(x = time, y = value, colour = branche), size = 1) +
     geom_hline(yintercept = 0, size = 0.5) +
     labs(x = "", y = "")
@@ -97,8 +97,7 @@ testthat::test_that("Correct colors with geom_line & colour" , {
 # ggsave("docs/scatterplot.jpeg")
 # ggsave("docs/scatterplot_wide.jpeg", wide = TRUE)
 #
-#
-# ## Punkte continous (Scatterplot mit gradient) ----
+# # Punkte continous (Scatterplot mit gradient) ----
 # ggplot(iris, aes(Sepal.Width, Sepal.Length, color = Sepal.Length)) +
 #   geom_point(size = 2) +
 #   scale_color_gradientn(colours = usecol(pal = pal_sgb_rot)) +
