@@ -13,55 +13,43 @@
 #' \dontrun{
 #' library(ggplot2)
 #' library(gsgb)
+#' theme_set(theme_sgb(base_size = 9))
 #'
 #' ## Linien, als jpeg speichern ----
 #' ggplot(kof) +
-#'   geom_line(aes(x = time, y = value, colour = branche),
-#'             size = 1) +
-#'   scale_colour_manual(values = usecol(pal = pal_sgb_pref,
-#'                                       n = 3),
-#'                       guide = guide_legend(nrow = 1)) +
+#'   geom_line(aes(x = time, y = value, colour = branche), size = 1) +
 #'   geom_hline(yintercept = 0, size = 0.5) + # dickere Linie bei 0
-#'   theme_sgb(base_size = 9) + # hoehere Zahl, um global alle Elemente zu vergroessern
-#'   theme(axis.title = element_blank())
+#'   labs(x = "", y = "")
+#' ggsave("docs/lineplot_t.jpeg", wide = TRUE)
 #'
-#' ggsave( "docs/lineplot.jpeg", width = 15.5, height = 7, units = "cm")
 #'
 #' ## Linien mit 4 Variablen, im EMF-Format sichern ----
 #' # (emf ist ein Vektorformat, das von Word akzeptiert wird)
 #' devEMF::emf(file = "docs/lineplot2.emf", width = 6.2, height = 2.75) # width/height in inches
-#' ggplot(mangelindikator,
-#'        aes(x = time, y = value, colour = label)) +
+#' ggplot(mangelindikator, aes(x = time, y = value, colour = label)) +
 #'   geom_line(size = 1) +
-#'   scale_colour_manual(values = usecol(pal = pal_sgb_pref,
-#'                                       n = 4),
-#'                       guide = guide_legend(nrow = 1)) +
 #'   scale_x_date(date_breaks = "2 years", date_labels = "%Y") +
-#'   theme_sgb() +
-#'   theme(axis.title = element_blank())
+#'   labs(x = "", y = "Mangelindikator")
 #' dev.off()
+#'
 #'
 #' ## Saeulen (bar), als PDF speichern ----
 #' pdf("docs/barplot.pdf", width = 10, height = 7)
 #' ggplot(mpg, aes(as.factor(year), fill = drv)) +
 #'   geom_bar(position = "dodge") +
-#'   scale_fill_manual(values = usecol(pal = pal_sgb_pref,
-#'                                     n = 3)) +
-#'   theme_sgb(base_size = 12) +
-#'   theme(axis.title = element_blank())
+#'   labs(x = "", y = "")
 #' dev.off()
 #'
-#' ## Saeulen gestapelt (bar) ----
+#'
+#' ## Saeulen gestapelt (geom_bar) ----
+#' # plus Reihenfolge der Palette anpassen und Ausrichtung der x-Achsen-Labels
 #' ggplot(mpg, aes(manufacturer, fill = fl)) +
 #'   geom_bar(position = "stack") +
-#'   scale_fill_manual(values = rev(usecol(pal = pal_sgb_pref, n = 5))) +
-#'   theme_sgb() +
-#'   theme(axis.text.x = element_text(angle = 45, hjust = 1))
-#'
+#'   scale_fill_manual(values = rev(usecol(pal = pal_sgb_pref, n = 5))) 
 #' ggsave("docs/stack_bar.jpeg", wide = TRUE)
 #'
-#' ## Kuchen, theme_sgb_minimal ----
-#' # Beispieldaten generieren:
+#'
+#' ## Kuchen-Diagramm, theme_sgb_minimal ----
 #' library(magrittr)
 #' df <- data.frame(group = c("Oberstes 1%", "Uebrige 9%", "Unterste 90%"),
 #'                  value = c(42, 33, 25))
@@ -78,14 +66,12 @@
 #'   geom_text(aes(y = ypos, label = scales::percent(prop / 100)),
 #'             color = "white",
 #'             size = 5) +
-#'   scale_fill_manual(values = usecol(pal = pal_sgb_pref, n = 3)) +
-#'   theme_sgb_blank() +
+#'   theme_sgb_blank() + # minimales Theme ohne Achsen und andere Beschriftungen
 #'   theme(
 #'     legend.position = "right",
 #'     legend.direction =   "vertical",
 #'     legend.justification = c("right", "center"))
-#'
-#  ggsave("docs/pie_chart.jpeg", wide = TRUE)
+#'  ggsave("docs/pie_chart.jpeg", wide = TRUE)
 #'
 #'
 #' ## Gestapeltes Flaechendiagramm ----
@@ -95,33 +81,23 @@
 #'   group = rep(LETTERS[1:5], times = 5))
 #' ggplot(df2, aes(x = time, y = value, fill = group)) +
 #'   geom_area() +
-#'   scale_fill_manual(values = usecol(pal = pal_sgb_rot,
-#'                                     n = 5)) +
-#'   theme_sgb(base_size = 12) +
-#'   theme(axis.title.y = element_blank())
-#'
+#'   scale_fill_manual(values = usecol(pal = pal_sgb_rot, n = 5))
 #' ggsave("docs/stacked_area.jpeg", wide = TRUE)
 #'
 #'
-#' ## Punkte discrete ----
+#' ## Punkte discrete (Scatterplot) ----
 #' ggplot(iris, aes(Sepal.Width, Sepal.Length, color = Species)) +
 #'   geom_point(size = 2) +
-#'   scale_color_manual(values = usecol(pal = pal_sgb_pref,
-#'                                      n = 3)) +
-#'   theme_sgb() +
-#'   theme(axis.title = element_blank())
-#'
+#'   labs(x = "", y = "")
 #' ggsave("docs/scatterplot.jpeg")
 #' ggsave("docs/scatterplot_wide.jpeg", wide = TRUE)
 #'
 #'
-#' ## Punkte continous ----
+#' ## Punkte continous (Scatterplot mit gradient) ----
 #' ggplot(iris, aes(Sepal.Width, Sepal.Length, color = Sepal.Length)) +
 #'   geom_point(size = 2) +
 #'   scale_color_gradientn(colours = usecol(pal = pal_sgb_rot)) +
-#'   theme_sgb() +
-#'   theme(axis.title = element_blank())
-#'
+#'   labs(x = "", y = "")
 #' ggsave("docs/scatter_continous_wide.jpeg", wide = TRUE)
 #'
 #' }
