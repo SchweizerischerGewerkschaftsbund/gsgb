@@ -20,12 +20,11 @@ testthat::test_that("Correct colors with geom_line & colour" , {
     geom_line(aes(x = time, y = value, colour = branche), size = 1) +
     geom_hline(yintercept = 0, size = 0.5) +
     labs(x = "", y = ""))
-  used_colors <- p$data[[1]]["colour"] %>%
-    unique() %>% as_vector() %>% unname()
+  used_colors <- p$data[[1]]["colour"][[1]] %>%
+    unique() %>% unname()
   testthat::expect_equal(used_colors,
-                         pal_sgb_pref[1:3] %>% as_vector() %>% unname())
+                         pal_sgb_pref[1:3] %>% as.matrix() %>% as.vector() %>% unname())
 })
-
 
 # Weitere Tests mit :
 # ## Linien mit 4 Variablen, im EMF-Format sichern ----
