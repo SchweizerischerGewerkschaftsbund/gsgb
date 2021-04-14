@@ -20,7 +20,7 @@ library(flextable) #für Word-Tabellen im SGB-Layout
 library(officer)   #für Word-Tabellen im SGB-Layout
 
 #Set up general knitr options
-knitr::opts_chunk$set(echo = TRUE, warning=FALSE, message=FALSE, fig.width=3.5, fig.height=2.5, dpi=600)
+knitr::opts_chunk$set(echo = TRUE, warning=FALSE, message=FALSE, fig.width=5, fig.height=3, dpi=600)
 # Working directory in knitr (uncomment next line if desired)
 # knitr::opts_knit$set(root.dir="I:/ABT1/_Datenablage/3_R-Skripte/rmarkdown-Vorlagen")
 
@@ -46,7 +46,7 @@ flextable_sgb <- function(x){
 
 #### 1. Wenig Unterstüzung ausserhalb der SVP
 
-#### 2. starke Gegenmobilisierung
+#### 2. Starke Gegenmobilisierung
 
 ::: notes
 This is a speaker note.
