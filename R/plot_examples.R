@@ -45,8 +45,7 @@
 #' # plus Reihenfolge der Palette anpassen und Ausrichtung der x-Achsen-Labels
 #' ggplot(mpg, aes(manufacturer, fill = fl)) +
 #'   geom_bar(position = "stack") +
-#'   scale_fill_manual(values = usecol(pal = rev(c(pal_sgb_pref)), n = 5)) +
-#'   theme(axis.text.x = element_text(angle = 45, hjust = 1))
+#'   scale_fill_manual(values = rev(usecol(pal = pal_sgb_pref, n = 5))) 
 #' ggsave("docs/stack_bar.jpeg", wide = TRUE)
 #'
 #'
@@ -102,6 +101,7 @@
 #' ggsave("docs/scatter_continous_wide.jpeg", wide = TRUE)
 #'
 #' }
+#'
 #'
 #' @family plot functions
 #'

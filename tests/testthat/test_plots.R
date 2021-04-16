@@ -3,12 +3,12 @@
 ## ---------------------------
 
 library(ggplot2)
-theme_set(theme_sgb(base_size = 10))
+theme_set(theme_sgb())
 
 testthat::context("Teste ob Standardplots ohne Error funktionieren")
 
 testthat::test_that("No error with geom_line" , {
-p <- ggplot(kof) +
+  p <- ggplot(kof) +
     geom_line(aes(x = time, y = value, colour = branche), size = 1) +
     geom_hline(yintercept = 0, size = 0.5) +
     labs(x = "", y = "")
@@ -26,7 +26,7 @@ testthat::test_that("Correct colors with geom_line & colour" , {
                          pal_sgb_pref[1:3] %>% as.matrix() %>% as.vector() %>% unname())
 })
 
-# Weitere Tests mit :
+# # Weitere Tests mit :
 # ## Linien mit 4 Variablen, im EMF-Format sichern ----
 # # (emf ist ein Vektorformat, das von Word akzeptiert wird)
 # devEMF::emf(file = "docs/lineplot2.emf", width = 6.2, height = 2.75) # width/height in inches
@@ -49,7 +49,7 @@ testthat::test_that("Correct colors with geom_line & colour" , {
 # # plus Reihenfolge der Palette anpassen und Ausrichtung der x-Achsen-Labels
 # ggplot(mpg, aes(manufacturer, fill = fl)) +
 #   geom_bar(position = "stack") +
-#   scale_fill_manual(values = usecol(pal = rev(c(pal_sgb_pref)), n = 5)) +
+#   scale_fill_manual(values = rev(usecol(pal = pal_sgb_pref, n = 5))) +
 #   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 # ggsave("docs/stack_bar.jpeg", wide = TRUE)
 #
@@ -97,7 +97,8 @@ testthat::test_that("Correct colors with geom_line & colour" , {
 # ggsave("docs/scatterplot.jpeg")
 # ggsave("docs/scatterplot_wide.jpeg", wide = TRUE)
 #
-# # Punkte continous (Scatterplot mit gradient) ----
+#
+# ## Punkte continous (Scatterplot mit gradient) ----
 # ggplot(iris, aes(Sepal.Width, Sepal.Length, color = Sepal.Length)) +
 #   geom_point(size = 2) +
 #   scale_color_gradientn(colours = usecol(pal = pal_sgb_rot)) +
