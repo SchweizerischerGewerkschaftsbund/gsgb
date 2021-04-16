@@ -1,6 +1,3 @@
-# Das ist ein Hilfsfile um Grafiken auszuprobieren, wenn etwas geandert wird.
-
-
 # Fonts
 # install.packages("showtext")
 # library(showtext)
