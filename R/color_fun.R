@@ -419,8 +419,7 @@ seecol <- function(pal = "sgb_all",  # which palette to output?
                    lwd_brd = NULL,  # line width of box borders
                    grid = TRUE,     # show grid?
                    title = NA,      # plot title? Using default title = NA constructs a default title
-                   ...              # additional arguments to plot.default().
-) {
+                   ...) {              # additional arguments to plot.default().
 
   ## 0. Preparations: -----
 
