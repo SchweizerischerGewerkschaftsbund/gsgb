@@ -33,7 +33,7 @@
 #' \code{\link{usecol}} um die Farbpaletten zu verwenden.
 #'
 #' @export
-pal_sgb_web <- data.frame(
+pal_sgb_web <- c(
   "rot1" = '#fdc0b0',
   "rot2" = '#eb836a',
   "rot3" = '#cb452c',
@@ -43,8 +43,7 @@ pal_sgb_web <- data.frame(
   "grau2" = '#a6a6a6',
   "grau3" = '#7c7c7c',
   "grau4" = '#545454',
-  "schwarz" = '#000000',
-  stringsAsFactors = FALSE)[c(4:1, 5:10)] # rot (4 as default) > weiss (5) > grau > schwarz (10)
+  "schwarz" = '#000000')[c(4:1, 5:10)] # rot (4 as default) > weiss (5) > grau > schwarz (10)
 
 #  (1) Rot Palette: -----
 
@@ -76,13 +75,12 @@ pal_sgb_web <- data.frame(
 #' \code{\link{usecol}} um die Farbpaletten zu verwenden.
 #'
 #' @export
-pal_sgb_rot <- data.frame(
+pal_sgb_rot <- c(
   "rot1" = '#fdc0b0',
   "rot2" = '#eb836a',
   "rot3" = '#cb452c',
   "rot4" = '#990000',
-  "rot5" = '#660000',
-  stringsAsFactors = FALSE)
+  "rot5" = '#660000')
 
 # Rote SGB-Farbe ----
 
@@ -140,13 +138,12 @@ names(SGBrot) <- "SGBrot"
 #' \code{\link{usecol}} um die Farbpaletten zu verwenden.
 #'
 #' @export
-pal_sgb_gelb <- data.frame(
+pal_sgb_gelb <- c(
   "gelb1" = '#fff3d9',
   "gelb2" = '#ffe7b2',
   "gelb3" = '#ffdb88',
   "gelb4" = '#ffce58',
-  "gelb5" = '#ffc000',
-  stringsAsFactors = FALSE)
+  "gelb5" = '#ffc000')
 
 
 # Gelb Farbe: ----
@@ -206,13 +203,12 @@ names(SGBgelb) <- "SGBgelb"
 #' \code{\link{usecol}} um die Farbpaletten zu verwenden.
 #'
 #' @export
-pal_sgb_dunkelblau <- data.frame(
+pal_sgb_dunkelblau <- c(
   "dunkelblau1" = '#cecdde',
   "dunkelblau2" = '#9f9dbd',
   "dunkelblau3" = '#71709e',
   "dunkelblau4" = '#42467e',
-  "dunkelblau5" = '#002060',
-  stringsAsFactors = FALSE)
+  "dunkelblau5" = '#002060')
 
 
 # Dunkelblau Farbe: ----
@@ -271,13 +267,12 @@ names(SGBdunkelblau) <- "SGBdunkelblau"
 #' \code{\link{usecol}} um die Farbpaletten zu verwenden.
 #'
 #' @export
-pal_sgb_hellblau <- data.frame(
+pal_sgb_hellblau <- c(
   "hellblau1" = '#dcedf9',
   "hellblau2" = '#b8dcf3',
   "hellblau3" = '#91cbed',
   "hellblau4" = '#63bae6',
-  "hellblau5" = '#00a9e0',
-  stringsAsFactors = FALSE)
+  "hellblau5" = '#00a9e0')
 
 
 # Hellblau Farbe ----
@@ -337,13 +332,12 @@ names(SGBhellblau) <- "SGBhellblau"
 #' \code{\link{usecol}} um die Farbpaletten zu verwenden.
 #'
 #' @export
-pal_sgb_grau <- data.frame(
+pal_sgb_grau <- c(
   "grau1" = '#d1d1d1',
   "grau2" = '#a6a6a6',
   "grau3" = '#7c7c7c',
   "grau4" = '#545454',
-  "grau5" = '#303030',
-  stringsAsFactors = FALSE)
+  "grau5" = '#303030')
 
 # Grau Farbe: ----
 
@@ -404,11 +398,10 @@ names(SGBgrau) <- "SGBgrau"
 #' \code{\link{usecol}} um die Farbpaletten zu verwenden.
 #'
 #' @export
-pal_sgb_signal <- data.frame(
+pal_sgb_signal <- c(
   "signal1" = '#990000',
   "signal2" = '#ffc000',
-  "signal3" = '#699903',
-  stringsAsFactors = FALSE)
+  "signal3" = '#699903')
 
 # pal_sgb: SGB-Standard-Farbpalette rot/grau ------
 
@@ -444,7 +437,7 @@ pal_sgb_signal <- data.frame(
 #' \code{\link{usecol}} um die Farbpaletten zu verwenden.
 #'
 #' @export
-pal_sgb <- cbind(rev(pal_sgb_rot), pal_sgb_web[5:10])
+pal_sgb <- c(rev(pal_sgb_rot), pal_sgb_web[5:10])
 
 # pal_sgb_pref: SGB-Standard-Farbpalette alle Farben ------
 
@@ -467,13 +460,12 @@ pal_sgb <- cbind(rev(pal_sgb_rot), pal_sgb_web[5:10])
 #' \code{\link{usecol}} um die Farbpaletten zu verwenden.
 #'
 #' @export
-pal_sgb_pref <- data.frame(
+pal_sgb_pref <- c(
   "SGBrot"        = SGBrot,
   "SGBhellblau"   = SGBhellblau,
   "SGBdunkelblau" = SGBdunkelblau,
   "SGBgelb"       = SGBgelb,
-  "SGBgrau"       = SGBgrau,
-  stringsAsFactors = FALSE)
+  "SGBgrau"       = SGBgrau)
 
 
 # pal_sgb_pair: Palette mit 10 gepaarten Farben (in 5 Paaren): ------
@@ -498,13 +490,12 @@ pal_sgb_pref <- data.frame(
 #' \code{\link{usecol}} um die Farbpaletten zu verwenden.
 #'
 #' @export
-pal_sgb_pair <- data.frame(
+pal_sgb_pair <- c(
   pal_sgb_rot[c(4, 2)],
   pal_sgb_hellblau[c(5, 3)],
   pal_sgb_dunkelblau[c(5, 3)],
   pal_sgb_gelb[c(5, 3)],
-  pal_sgb_grau[c(5, 3)],
-  stringsAsFactors = FALSE)
+  pal_sgb_grau[c(5, 3)])
 
 
 

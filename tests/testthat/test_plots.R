@@ -26,7 +26,7 @@ testthat::test_that("Correct colors with geom_line & colour" , {
                          pal_sgb_pref[1:3] %>% as.matrix() %>% as.vector() %>% unname())
 })
 
-# Weitere Tests mit :
+# # Weitere Tests mit :
 # ## Linien mit 4 Variablen, im EMF-Format sichern ----
 # # (emf ist ein Vektorformat, das von Word akzeptiert wird)
 # devEMF::emf(file = "docs/lineplot2.emf", width = 6.2, height = 2.75) # width/height in inches
@@ -49,7 +49,7 @@ testthat::test_that("Correct colors with geom_line & colour" , {
 # # plus Reihenfolge der Palette anpassen und Ausrichtung der x-Achsen-Labels
 # ggplot(mpg, aes(manufacturer, fill = fl)) +
 #   geom_bar(position = "stack") +
-#   scale_fill_manual(values = usecol(pal = rev(c(pal_sgb_pref)), n = 5)) +
+#   scale_fill_manual(values = rev(usecol(pal = pal_sgb_pref, n = 5))) +
 #   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 # ggsave("docs/stack_bar.jpeg", wide = TRUE)
 #
