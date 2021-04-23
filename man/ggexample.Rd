@@ -20,7 +20,7 @@ ggplot(kof) +
   geom_line(aes(x = time, y = value, colour = branche), size = 1) +
   geom_hline(yintercept = 0, size = 0.5) + # dickere Linie bei 0
   labs(x = "", y = "")
-ggsave("docs/lineplot_t.jpeg", wide = TRUE)
+ggsave("docs/lineplot.jpeg", wide = TRUE)
 
 
 ## Linien mit 4 Variablen, im EMF-Format sichern ----
@@ -45,7 +45,7 @@ dev.off()
 # plus Reihenfolge der Palette anpassen und Ausrichtung der x-Achsen-Labels
 ggplot(mpg, aes(manufacturer, fill = fl)) +
   geom_bar(position = "stack") +
-  scale_fill_manual(values = rev(usecol(pal = pal_sgb_pref, n = 5))) 
+  scale_fill_manual(values = rev(usecol(pal = pal_sgb_pref, n = 5)))
 ggsave("docs/stack_bar.jpeg", wide = TRUE)
 
 
