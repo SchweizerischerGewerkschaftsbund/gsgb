@@ -1,58 +1,157 @@
-#' Default scale mit SGB-Farben
+## scale-Functions.R  |  gsgb
+## SGB | 25.03.2021 | Kristina Schuepbach
+## ---------------------------
+
+# Idee: scale_color_* und scale_fill_* von ggplot ueberschreiben, damit
+# default-maessig die sgb-Farben verwendet werden.
+
+# Von hadley (https://ggplot2-book.org/scale-colour.html):
+# The default scale for continuous fill scales is scale_fill_continuous()
+# which in turn defaults to scale_fill_gradient().
+# scale_fill_gradient() produces a two-colour gradient
+# scale_fill_gradient2() produces a three-colour gradient with specified midpoint
+# scale_fill_gradientn() produces an n-colour gradient
+
+# The default scale for discrete colours is scale_fill_discrete() which in turn defaults to
+# scale_fill_hue().
+
+#' # Discrete fill/colour scales -----------------------------------
+
+#' Scale colour discrete with SGB-colors
 #'
-#' @param ... Beliebige Parameter die an die Funktion \code{scale_color_manual()} weitergegeben werden koennen.
+#' Overwrites the default discrete colour scale with SGB-palette \code{pal_sgb_pref}. To use
+#' another palette or custom colours, use \code{scale_color_manual()}.
 #'
-#' @return see return of \code{scale_color_manual()}.
+#' @param ... parameters passed on to \code{scale_color_manual()}.
+#'
+#' @examples
+#' ggplot(iris, aes(Sepal.Width, Sepal.Length, color = Species)) +
+#' geom_point(size = 2) +
+#'   labs(x = "", y = "")
+#'
+#' # This gives the same:
+#' ggplot(iris, aes(Sepal.Width, Sepal.Length, color = Species)) +
+#'   geom_point(size = 2) +
+#'   labs(x = "", y = "") +
+#'   scale_fill_discrete()
+#'
+#' # To change color scale:
+#' ggplot(iris, aes(Sepal.Width, Sepal.Length, color = Species)) +
+#'   geom_point(size = 2) +
+#'   labs(x = "", y = "") +
+#'   scale_color_manual(values = rev(usecol(pal_sgb_rot)))
+#'
 #' @export
-scale_colour_discrete <-
-  function(...) {
-    scale_color_manual(values = usecol(pal = pal_sgb_pref))
+scale_colour_discrete <-  function(...) {
+  ggplot2::scale_colour_manual(values = usecol(pal = pal_sgb_pref))
+}
+scale_color_discrete <- function(...) {
+  ggplot2::scale_color_manual(values = usecol(pal = pal_sgb_pref))
 }
 
-#' Default scale mit SGB-Farben
+#' Scale fill discrete with SGB-colors
 #'
-#' @param ... Beliebige Parameter die an die Funktion \code{scale_fill_manual()} weitergegeben werden koennen.
+#' Overwrites the default discrete fill scale with SGB-palette \code{pal_sgb_pref}. To use
+#' another palette or custom colours, use \code{scale_fill_manual()}.
 #'
-#' @return see return of \code{scale_fill_manual()}.
+#' @param ... parameters passed on to \code{scale_fill_manual()}.
+#'
+#' @examples
+#' ggplot(mpg, aes(as.factor(year), fill = drv)) +
+#'   geom_bar(position = "dodge") +
+#'     labs(x = "", y = "")
+#'
+#' # This gives the same:
+#' ggplot(mpg, aes(as.factor(year), fill = drv)) +
+#'   geom_bar(position = "dodge") +
+#'     labs(x = "", y = "") +
+#'   scale_fill_discrete()
+#'
+#' # To change fill scale:
+#' ggplot(mpg, aes(as.factor(year), fill = drv)) +
+#'   geom_bar(position = "dodge") +
+#'     labs(x = "", y = "") +
+#'  scale_fill_manual(values = rev(usecol(pal_sgb_dunkelblau)))
+#'
 #' @export
 scale_fill_discrete <- function(...) {
-  scale_fill_manual(values = usecol(pal = pal_sgb_pref))
+  ggplot2::scale_fill_manual(values = usecol(pal = pal_sgb_pref))
 }
 
 
-# Continuous colour:
-# scale_colour_gradient <- function(...) scale_color_gradient(low = pal_sgb_rot[1], high = pal_sgb_rot[5])
-# scale_colour_gradient <- function(...) scale_color_gradient(low = "#fdc0b0", high = "#660000")
+# This could be another option to override palette defaults:
+# options(ggplot2.discrete.fill = function() scale_fill_manual(values = usecol(pal = pal_sgb)))
+# options(ggplot2.discrete.colour = function() scale_fill_manual(values = usecol(pal = pal_sgb)))
 
+# Continuous fill/colour scales ----------------------------------
 
-# Continuous fill - das funktioniert schon, nun noch andere machen udn tests durchfuehren
-scale_fill_gradient <- function(..., low = "#660000", high = "#fdc0b0", space = "Lab",
-                                na.value = "grey50", guide = "colourbar", aesthetics = "fill") {
-  ggplot2::scale_fill_gradient(..., low = low, high = high, space = space,
-                               na.value = na.value, guide = guide, aesthetics = aesthetics)
+#' Scale fill continuous with SGB-colors
+#'
+#' Overwrites the default continuous fill scale with SGB-colors. To use
+#' another palette or custom colours, use \code{scale_fill_gradient()}.
+#'
+#' @param ... parameters passed on to \code{scale_fill_gradient()}.
+#'
+#' @examples
+#' @export
+scale_fill_continuous <- function(...) {
+  ggplot2::scale_fill_gradient(low = pal_sgb_rot[5], high = pal_sgb_rot[1])
+}
+scale_fill_gradient <- function(..., low = pal_sgb_rot[5], high = pal_sgb_rot[1]) {
+  ggplot2::scale_fill_gradient(..., low = low, high = high)
+}
+scale_fill_gradient2 <- function(..., low = pal_sgb_dunkelblau[5],
+                                 mid = pal_sgb_hellblau[2],
+                                 high = pal_sgb_rot[5]) {
+  ggplot2::scale_fill_gradient2(..., low = low, mid = mid, high = high)
+}
+scale_fill_gradientn <- function(..., colors = pal_sgb, colours = pal_sgb) {
+  ggplot2::scale_fill_gradientn(..., colors = colors, colours = pal_sgb)
 }
 
-# Continuous colour / color
-scale_colour_gradient <- function(..., low = "#660000", high = "#fdc0b0", space = "Lab",
-                                na.value = "grey50", guide = "colourbar", aesthetics = "colour") {
-  ggplot2::scale_colour_gradient(..., low = low, high = high, space = space,
-                               na.value = na.value, guide = guide, aesthetics = aesthetics)
+
+#' Scale color continuous with SGB-colors
+#'
+#' Overwrites the default continuous color scale with SGB-colors. To use
+#' another palette or custom colours, use \code{scale_fill_gradient()}.
+#'
+#' @param ... parameters passed on to \code{scale_fill_gradient()}.
+#'
+#' @examples
+#' @export
+scale_color_continuous <- function(...) {
+  ggplot2::scale_color_gradient(low = pal_sgb_rot[5], high = pal_sgb_rot[1])
 }
-scale_color_gradient <- function(..., low = "#660000", high = "#fdc0b0", space = "Lab",
-                                  na.value = "grey50", guide = "colourbar", aesthetics = "color") {
-  ggplot2::scale_color_gradient(..., low = low, high = high, space = space,
-                                 na.value = na.value, guide = guide, aesthetics = aesthetics)
+scale_colour_continuous <- function(...) {
+  ggplot2::scale_colour_gradient(low = pal_sgb_rot[5], high = pal_sgb_rot[1])
 }
 
-# nun noch:
-# gradientn
-# gradient2
-# scale_fill_hue ?
-# scale_fill_gradient2 <- function(...) scale_fill_gradientn(colours = usecol(pal = pal_sgb_rot))
+scale_color_gradient <- function(..., low = pal_sgb_rot[5], high = pal_sgb_rot[1]) {
+  ggplot2::scale_color_gradient(..., low = low, high = high)
+}
+scale_colour_gradient <- function(..., low = pal_sgb_rot[5], high = pal_sgb_rot[1]) {
+  ggplot2::scale_colour_gradient(..., low = low, high = high)
+}
 
+scale_color_gradient2 <- function(..., low = pal_sgb_dunkelblau[5],
+                                 mid = pal_sgb_hellblau[2],
+                                 high = pal_sgb_rot[5]) {
+  ggplot2::scale_color_gradient2(..., low = low, mid = mid, high = high)
+}
+scale_colour_gradient2 <- function(..., low = pal_sgb_dunkelblau[5],
+                                  mid = pal_sgb_hellblau[2],
+                                  high = pal_sgb_rot[5]) {
+  ggplot2::scale_colour_gradient2(..., low = low, mid = mid, high = high)
+}
 
-# Zum testen:
-# ggplot(faithfuld, aes(waiting, eruptions, color = density)) +
-#   geom_tile() +
-#   scale_color_gradient()
+scale_color_gradientn <- function(..., colors = pal_sgb, colours = pal_sgb) {
+  ggplot2::scale_color_gradientn(..., colors = colors, colours = pal_sgb)
+}
+scale_colour_gradientn <- function(..., colors = pal_sgb, colours = pal_sgb) {
+  ggplot2::scale_colour_gradientn(..., colors = colors, colours = pal_sgb)
+}
 
+# To Do:
+# - mit beispielen ergaenzen
+# - testen (scale_fill_gradient* ist plus minus schon, scale_colour_gradient* noch nicht)
+# - Tests schreiben fuer alle Funktionen in diesem Script

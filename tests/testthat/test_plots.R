@@ -7,6 +7,126 @@ theme_set(theme_sgb())
 
 testthat::context("Teste ob Standardplots ohne Error funktionieren")
 
+
+
+# These are plots that can be used to test scale_* functions and also
+# as examples for the functions - to implement
+#
+# # Scale color discrete ----
+# ggplot(iris, aes(Sepal.Width, Sepal.Length, color = Species)) +
+# geom_point(size = 2) +
+#   labs(x = "", y = "")
+#
+# # This gives the same:
+# ggplot(iris, aes(Sepal.Width, Sepal.Length, color = Species)) +
+#   geom_point(size = 2) +
+#   labs(x = "", y = "") +
+#   scale_fill_discrete()
+#
+# # To change color scale:
+# ggplot(iris, aes(Sepal.Width, Sepal.Length, color = Species)) +
+#   geom_point(size = 2) +
+#   labs(x = "", y = "") +
+#   scale_color_manual(values = rev(usecol(pal_sgb_rot)))
+#
+#
+#
+# # Scale fill discrete ----
+# ggplot(mpg, aes(as.factor(year), fill = drv)) +
+#   geom_bar(position = "dodge") +
+#     labs(x = "", y = "")
+#
+# # This gives the same:
+# ggplot(mpg, aes(as.factor(year), fill = drv)) +
+#   geom_bar(position = "dodge") +
+#     labs(x = "", y = "") +
+#   scale_fill_discrete()
+#
+# # To change fill scale:
+# ggplot(mpg, aes(as.factor(year), fill = drv)) +
+#   geom_bar(position = "dodge") +
+#     labs(x = "", y = "") +
+#  scale_fill_manual(values = rev(usecol(pal_sgb_dunkelblau)))
+#
+#
+#
+# # Scale fill continuous ----
+# ggplot(faithfuld, aes(waiting, eruptions)) +
+#   geom_raster(aes(fill = density))
+#
+# # This gives the same:
+# ggplot(faithfuld, aes(waiting, eruptions)) +
+#   geom_raster(aes(fill = density)) +
+#   scale_fill_gradient()
+#
+# # Custom gradient colors:
+# ggplot(faithfuld, aes(waiting, eruptions)) +
+#   geom_raster(aes(fill = density)) +
+#   scale_fill_gradient(low = pal_sgb_dunkelblau[5], high = pal_sgb_gelb[5])
+#
+# # 3-color gradient:
+# ggplot(faithfuld, aes(waiting, eruptions)) +
+#   geom_raster(aes(fill = density)) +
+#   scale_fill_gradient2(midpoint = .02)
+#
+# # 3-color gradient (custom):
+# ggplot(faithfuld, aes(waiting, eruptions)) +
+#   geom_raster(aes(fill = density)) +
+#   scale_fill_gradient2(low = pal_sgb_rot[5], mid = "white", high = pal_sgb_gelb[5],
+#                        midpoint = .02)
+#
+# # n-colour gradient:
+# ggplot(faithfuld, aes(waiting, eruptions)) +
+#   geom_raster(aes(fill = density)) +
+#   scale_fill_gradientn()
+#
+# # n-colour gradient (custom):
+# ggplot(faithfuld, aes(waiting, eruptions)) +
+#   geom_raster(aes(fill = density)) +
+#   scale_fill_gradientn(colors = pal_sgb_pref)
+#
+# # Use `na.value = NA` to hide missing values but keep the original axis range
+# df_na <- data.frame(
+#   value = seq(1, 20),
+#   x = runif(20),
+#   y = runif(20),
+#   z1 = c(rep(NA, 10), rnorm(10))
+# )
+# ggplot(df_na, aes(x = value, y)) +
+#   geom_bar(aes(fill = z1), stat = "identity") +
+#   scale_fill_gradient(na.value = NA)
+#
+#
+#
+#
+#
+#
+# ggplot(faithfuld, aes(waiting, eruptions)) +
+#   geom_raster(aes(fill = density)) +
+#   scale_fill_gradientn(colours = terrain.colors(10))
+#
+#
+# # Scale colour continuous -----
+# # Adjust colour choices with low and high
+#
+# df <- data.frame(
+#   x = runif(100),
+#   y = runif(100),
+#   z1 = rnorm(100),
+#   z2 = abs(rnorm(100))
+# )
+# ggplot(df, aes(x, y)) +
+#   geom_point(aes(colour = z2)) +
+#   scale_colour_gradient(low = "white", high = "black")
+#
+# ggplot(df_na, aes(x, y)) +
+#   geom_point(aes(colour = z1)) +
+#   scale_colour_gradient(low = "yellow", high = "red", na.value = NA)
+
+
+
+
+
 testthat::test_that("No error with geom_line" , {
   p <- ggplot(kof) +
     geom_line(aes(x = time, y = value, colour = branche), size = 1) +
