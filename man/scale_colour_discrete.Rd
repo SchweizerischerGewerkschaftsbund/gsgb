@@ -2,6 +2,7 @@
 % Please edit documentation in R/scales.R
 \name{scale_colour_discrete}
 \alias{scale_colour_discrete}
+\alias{scale_color_discrete}
 \title{# Discrete fill/colour scales -----------------------------------
 Scale color discrete with SGB-colors}
 \usage{
@@ -16,6 +17,9 @@ another palette or custom colors, use \code{scale_color_manual()}.
 }
 \examples{
 \dontrun{
+library(ggplot2)
+library(gsgb)
+theme_set(theme_sgb(base_size = 9))
 
 ggplot(iris, aes(Sepal.Width, Sepal.Length, color = Species)) +
   geom_point()
@@ -32,3 +36,10 @@ ggplot(iris, aes(Sepal.Width, Sepal.Length, color = Species)) +
 }
 
 }
+\seealso{
+Other colour scales: 
+\code{\link{scale_colour_gradient}()},
+\code{\link{scale_fill_discrete}()},
+\code{\link{scale_fill_gradient}()}
+}
+\concept{colour scales}

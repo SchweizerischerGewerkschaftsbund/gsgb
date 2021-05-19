@@ -3,6 +3,7 @@
 ## ---------------------------
 
 library(ggplot2)
+library(gsgb)
 theme_set(theme_sgb())
 
 # Scale color discrete ----

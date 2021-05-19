@@ -766,7 +766,7 @@ seecol <- function(pal = "sgb_all",  # which palette to output?
 #' seecol(pal_mpg, title = "Colors of the Max Planck Society")
 #'
 #' # (3) From RGB values:  -----
-#' #' \dontrun{
+#' \dontrun{
 #' library(grDevices)
 #'
 #' # Barrier-free color palette
@@ -798,7 +798,8 @@ seecol <- function(pal = "sgb_all",  # which palette to output?
 #' my_pals <- list(pal_flag_de, pal_flag_de_2, pal_google, pal_mpg, pal_okabe_ito)
 #' seecol(my_pals, col_brd = "white", lwd_brd = 5,
 #'        title = "Comparing custom color palettes")
-#'}
+#'
+#' }
 #'
 #' @family Farbfunktionen
 #'

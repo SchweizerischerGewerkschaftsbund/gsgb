@@ -24,8 +24,14 @@
 #'
 #' @param ... parameters passed on to \code{scale_color_manual()}.
 #'
+#' @family colour scales
+#' @rdname scale_colour_discrete
+#'
 #' @examples
 #' \dontrun{
+#' library(ggplot2)
+#' library(gsgb)
+#' theme_set(theme_sgb(base_size = 9))
 #'
 #' ggplot(iris, aes(Sepal.Width, Sepal.Length, color = Species)) +
 #'   geom_point()
@@ -45,9 +51,11 @@
 scale_colour_discrete <-  function(...) {
   ggplot2::scale_colour_manual(values = usecol(pal = pal_sgb_pref))
 }
-scale_color_discrete <- function(...) {
-  ggplot2::scale_color_manual(values = usecol(pal = pal_sgb_pref))
-}
+
+#' @rdname scale_colour_discrete
+#' @export
+#' @usage NULL
+scale_color_discrete <- scale_colour_discrete
 
 #' Scale fill discrete with SGB-colors
 #'
@@ -56,8 +64,15 @@ scale_color_discrete <- function(...) {
 #'
 #' @param ... parameters passed on to \code{scale_fill_manual()}.
 #'
+#' @family colour scales
+#' @rdname scale_fill_discrete
+#'
 #' @examples
 #' \dontrun{
+#' library(ggplot2)
+#' library(gsgb)
+#' theme_set(theme_sgb(base_size = 9))
+#'
 #' ggplot(mpg, aes(as.factor(year), fill = drv)) +
 #'   geom_bar(position = "dodge") +
 #'     labs(x = "", y = "")
@@ -89,8 +104,15 @@ scale_fill_discrete <- function(...) {
 #'
 #' @param ... parameters passed on to \code{scale_fill_gradient()}.
 #'
+#' @family colour scales
+#' @name scale_fill_gradient
+#'
 #' @examples
 #' \dontrun{
+#' library(ggplot2)
+#' library(gsgb)
+#' theme_set(theme_sgb(base_size = 9))
+#'
 #' ggplot(faithfuld, aes(waiting, eruptions)) +
 #'   geom_raster(aes(fill = density))
 #'
@@ -134,26 +156,39 @@ scale_fill_discrete <- function(...) {
 #' ggplot(df_na, aes(x = value, y)) +
 #'   geom_bar(aes(fill = z1), stat = "identity") +
 #'   scale_fill_gradient(na.value = NA)
-#'}
+#' }
 #'
-#'@export
-scale_fill_continuous <- function(...) {
-  ggplot2::scale_fill_gradient(low = pal_sgb_rot[5], high = pal_sgb_rot[1])
-}
+NULL
+
+#' @rdname scale_fill_gradient
+#' @param low,high Colours for low and high end of the gradient
+#' @export
 scale_fill_gradient <- function(..., low = pal_sgb_rot[5], high = pal_sgb_rot[1]) {
   ggplot2::scale_fill_gradient(..., low = low, high = high)
 }
+
+#' @rdname scale_fill_gradient
+#' @param mid Colour for mid point
+#' @export
 scale_fill_gradient2 <- function(..., low = pal_sgb_dunkelblau[5],
                                  mid = pal_sgb_hellblau[2],
                                  high = pal_sgb_rot[5]) {
   ggplot2::scale_fill_gradient2(..., low = low, mid = mid, high = high)
 }
+
+#' @rdname scale_fill_gradient
+#' @param colors,colours Vector of colours to use for n-colour gradient.
+#' @export
 scale_fill_gradientn <- function(..., colors, colours) {
   if (missing(colours) & missing(colors)) colours <- pal_sgb
   colours <- if (missing(colours)) colors  else colours
   ggplot2::scale_fill_gradientn(..., colours = colours)
 }
 
+#' @export
+#' @rdname scale_fill_gradient
+#' @usage NULL
+scale_fill_continuous <- scale_fill_gradient
 
 #' Scale color continuous with SGB-colors
 #'
@@ -162,8 +197,15 @@ scale_fill_gradientn <- function(..., colors, colours) {
 #'
 #' @param ... parameters passed on to \code{scale_color_gradient()}.
 #'
+#' @family colour scales
+#' @name scale_colour_gradient
+#'
 #' @examples
 #' \dontrun{
+#' library(ggplot2)
+#' library(gsgb)
+#' theme_set(theme_sgb(base_size = 9))
+#'
 #' ggplot(iris, aes(Sepal.Width, Sepal.Length)) +
 #'   geom_point(aes(color = Sepal.Length))
 #'
@@ -213,44 +255,56 @@ scale_fill_gradientn <- function(..., colors, colours) {
 #' ggplot(df_na, aes(x = value, y)) +
 #'   geom_point(aes(color = z1)) +
 #'   scale_color_gradient(na.value = SGBdunkelblau)
-#'}
-#' @export
-scale_color_continuous <- function(...) {
-  ggplot2::scale_color_gradient(low = pal_sgb_rot[5], high = pal_sgb_rot[1])
-}
-scale_colour_continuous <- function(...) {
-  ggplot2::scale_colour_gradient(low = pal_sgb_rot[5], high = pal_sgb_rot[1])
-}
+#' }
+#'
+NULL
 
-scale_color_gradient <- function(..., low = pal_sgb_rot[5], high = pal_sgb_rot[1]) {
-  ggplot2::scale_color_gradient(..., low = low, high = high)
-}
+#' @rdname scale_colour_gradient
+#' @param low,high Colours for low and high end of the gradient
+#' @export
 scale_colour_gradient <- function(..., low = pal_sgb_rot[5], high = pal_sgb_rot[1]) {
   ggplot2::scale_colour_gradient(..., low = low, high = high)
 }
 
-scale_color_gradient2 <- function(..., low = pal_sgb_dunkelblau[5],
-                                 mid = pal_sgb_hellblau[2],
-                                 high = pal_sgb_rot[5]) {
-  ggplot2::scale_color_gradient2(..., low = low, mid = mid, high = high)
-}
+#' @rdname scale_colour_gradient
+#' @param mid Colour for mid point
+#' @export
 scale_colour_gradient2 <- function(..., low = pal_sgb_dunkelblau[5],
                                   mid = pal_sgb_hellblau[2],
                                   high = pal_sgb_rot[5]) {
   ggplot2::scale_colour_gradient2(..., low = low, mid = mid, high = high)
 }
 
-scale_color_gradientn <- function(..., colours, colors) {
-  if (missing(colours) & missing(colors)) colours <- pal_sgb
-  colours <- if (missing(colours)) colors  else colours
-  ggplot2::scale_color_gradientn(..., colours = colours)
-}
+#' @rdname scale_colour_gradient
+#' @param colors,colours Vector of colours to use for n-colour gradient.
+#' @export
 scale_colour_gradientn <- function(..., colours = pal_sgb, colors = pal_sgb) {
   if (missing(colours) & missing(colors)) colours <- pal_sgb
   colours <- if (missing(colours)) colors  else colours
   ggplot2::scale_color_gradientn(..., colours = colours)
 }
 
-# To Do:
-# - testen (scale_fill_gradient* ist plus minus schon, scale_colour_gradient* noch nicht)
-# - Tests schreiben fuer alle Funktionen in diesem Script
+#' @rdname scale_colour_gradient
+#' @export
+#' @usage NULL
+scale_colour_continuous <- scale_colour_gradient
+
+#' @export
+#' @rdname scale_colour_gradient
+#' @usage NULL
+scale_color_gradient <- scale_colour_gradient
+
+#' @export
+#' @rdname scale_colour_gradient
+#' @usage NULL
+scale_color_continuous <- scale_colour_continuous
+
+#' @export
+#' @rdname scale_colour_gradient
+#' @usage NULL
+scale_color_gradient2 <- scale_colour_gradient2
+
+#' @export
+#' @rdname scale_colour_gradient
+#' @usage NULL
+scale_color_gradientn <- scale_colour_gradientn

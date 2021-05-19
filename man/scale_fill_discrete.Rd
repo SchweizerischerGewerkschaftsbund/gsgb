@@ -15,6 +15,10 @@ another palette or custom colours, use \code{scale_fill_manual()}.
 }
 \examples{
 \dontrun{
+library(ggplot2)
+library(gsgb)
+theme_set(theme_sgb(base_size = 9))
+
 ggplot(mpg, aes(as.factor(year), fill = drv)) +
   geom_bar(position = "dodge") +
     labs(x = "", y = "")
@@ -33,3 +37,10 @@ ggplot(mpg, aes(as.factor(year), fill = drv)) +
 }
 
 }
+\seealso{
+Other colour scales: 
+\code{\link{scale_colour_discrete}()},
+\code{\link{scale_colour_gradient}()},
+\code{\link{scale_fill_gradient}()}
+}
+\concept{colour scales}
