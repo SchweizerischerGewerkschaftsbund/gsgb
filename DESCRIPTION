@@ -12,6 +12,8 @@ Depends:
     R (>= 3.4.0)
 Imports:
     utils,
+    grDevices,
+    graphics,
     ggplot2 
 Suggests:
     knitr,

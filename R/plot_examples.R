@@ -9,10 +9,11 @@
 #' Grafiken fuer Word) oder als pdf gespeichert werden koennen.
 #'
 #' @seealso
-#' \code{\link{scale_color_discrete}} und \code{\link{scale_fill_discrete}} fuer diskrete Variablen
+#' \code{\link{scale_color_discrete}} und \code{\link{scale_fill_discrete}} fuer diskrete Variablen.
 #' \code{\link{scale_color_gradient}} und \code{\link{scale_fill_gradient}} fuer kontinuerliche Variablen.
+#' \code{\link{usecol}} um komplexere Paletten zu mischen.
+#' \code{\link{seecol}} um alle SGB-Paletten und -Farben zu anzusehen.
 #'
-#' @export
 #' @examples
 #'
 #' \dontrun{
@@ -127,7 +128,7 @@
 #' dev.off()
 #'
 #' # Mehrere Seiten
-#' pdf("docs/barplot.pdf", onefile = TRUE,
+#' pdf("docs/barplot_mult.pdf", onefile = TRUE,
 #'     height = 20/2.54, width = 27/2.54,
 #'     paper = "a4r")
 #' ggplot(mpg, aes(as.factor(year), fill = drv)) +
@@ -144,8 +145,8 @@
 #' @family plot functions
 #'
 #' @name ggexample
-#'
 #' @import ggplot2
+#'
 NULL
 
 

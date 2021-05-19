@@ -25,6 +25,8 @@
 #' @param ... parameters passed on to \code{scale_color_manual()}.
 #'
 #' @examples
+#' \dontrun{
+#'
 #' ggplot(iris, aes(Sepal.Width, Sepal.Length, color = Species)) +
 #'   geom_point()
 #'
@@ -37,6 +39,7 @@
 #' ggplot(iris, aes(Sepal.Width, Sepal.Length, color = Species)) +
 #'   geom_point() +
 #'   scale_color_manual(values = rev(usecol(pal_sgb_rot)))
+#'}
 #'
 #' @export
 scale_colour_discrete <-  function(...) {
@@ -54,6 +57,7 @@ scale_color_discrete <- function(...) {
 #' @param ... parameters passed on to \code{scale_fill_manual()}.
 #'
 #' @examples
+#' \dontrun{
 #' ggplot(mpg, aes(as.factor(year), fill = drv)) +
 #'   geom_bar(position = "dodge") +
 #'     labs(x = "", y = "")
@@ -69,16 +73,12 @@ scale_color_discrete <- function(...) {
 #'   geom_bar(position = "dodge") +
 #'     labs(x = "", y = "") +
 #'  scale_fill_manual(values = rev(usecol(pal_sgb_dunkelblau)))
+#'}
 #'
 #' @export
 scale_fill_discrete <- function(...) {
   ggplot2::scale_fill_manual(values = usecol(pal = pal_sgb_pref))
 }
-
-
-# This could be another option to override palette defaults:
-# options(ggplot2.discrete.fill = function() scale_fill_manual(values = usecol(pal = pal_sgb)))
-# options(ggplot2.discrete.colour = function() scale_fill_manual(values = usecol(pal = pal_sgb)))
 
 # Continuous fill/colour scales ----------------------------------
 
@@ -89,9 +89,8 @@ scale_fill_discrete <- function(...) {
 #'
 #' @param ... parameters passed on to \code{scale_fill_gradient()}.
 #'
-#' @export
-#'
 #' @examples
+#' \dontrun{
 #' ggplot(faithfuld, aes(waiting, eruptions)) +
 #'   geom_raster(aes(fill = density))
 #'
@@ -135,7 +134,9 @@ scale_fill_discrete <- function(...) {
 #' ggplot(df_na, aes(x = value, y)) +
 #'   geom_bar(aes(fill = z1), stat = "identity") +
 #'   scale_fill_gradient(na.value = NA)
+#'}
 #'
+#'@export
 scale_fill_continuous <- function(...) {
   ggplot2::scale_fill_gradient(low = pal_sgb_rot[5], high = pal_sgb_rot[1])
 }
@@ -162,6 +163,7 @@ scale_fill_gradientn <- function(..., colors, colours) {
 #' @param ... parameters passed on to \code{scale_color_gradient()}.
 #'
 #' @examples
+#' \dontrun{
 #' ggplot(iris, aes(Sepal.Width, Sepal.Length)) +
 #'   geom_point(aes(color = Sepal.Length))
 #'
@@ -211,7 +213,7 @@ scale_fill_gradientn <- function(..., colors, colours) {
 #' ggplot(df_na, aes(x = value, y)) +
 #'   geom_point(aes(color = z1)) +
 #'   scale_color_gradient(na.value = SGBdunkelblau)
-#'
+#'}
 #' @export
 scale_color_continuous <- function(...) {
   ggplot2::scale_color_gradient(low = pal_sgb_rot[5], high = pal_sgb_rot[1])
