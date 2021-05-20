@@ -32,14 +32,18 @@ theme_set(th)
 
 # flextable SGB theme function
 flextable_sgb <- function(x){
-  x <- flextable(x)
-  x <- colformat_num(x, big.mark="'", digits=0)
-  x <- border_remove(x = x) 
-  x <- bold(x, part="header")
-  sb  <- fp_border(color="black", width=1)
-  x <- hline_top(x, border=sb, part="header" )
-  x <- hline_top(x, border=sb, part="body" )
-  x <- hline_bottom(x, border=sb, part="body")
+  x <- flextable::flextable(x)
+  x <- flextable::colformat_num(x, big.mark = "'", digits = 0)
+  x <- flextable::border_remove(x = x) 
+  x <- flextable::bold(x, part = "header")
+  sb  <- officer::fp_border(color = "black", width = 1)
+  x <- flextable::hline_top(x, border = sb, part = "header" )
+  x <- flextable::hline_top(x, border = sb, part = "body" )
+  x <- flextable::hline_bottom(x, border = sb, part = "body")
+  x <- flextable::fontsize(x,size = 10, part = "header")
+  x <- flextable::fontsize(x,size = 10, part = "body")
+  x <- flextable::align_text_col(x, align = "left", header = FALSE, footer = FALSE)
+  x <- flextable::align_nottext_col(x, align = "right")
   return(x)
 }
 ```
