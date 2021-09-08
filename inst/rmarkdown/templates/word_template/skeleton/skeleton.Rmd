@@ -13,7 +13,7 @@ output:
 <!-- #### Heading 4 is for figure subtitles -->
 <!-- [For Links](http://www.sgb.ch) -->
 
-```{r setup, include=FALSE, warnings=FALSE}
+```{r setup, include=FALSE, warning=FALSE, results=FALSE, message=FALSE}
 #Load functions and set working directory
 source("I:/ABT1/_Datenablage/3_R-Skripte/SGB_data_prep_functions.R")
 library(gsgb)
@@ -48,6 +48,10 @@ flextable_sgb <- function(x){
   x <- flextable::font(x, fontname = "NimbusSanNov", part = "body")
   return(x)
 }
+
+# Speicherort .rda-Dateien festlegen
+wd_rda  <- "I:/ABT1/_Datenablage/1_Aufbereitete_Daten/rda/"       
+wd_predictions <- "I:/ABT1/_Datenablage/5_Prognosen/rda/"
 ```
 
 # Wenig Unterstüzung ausserhalb der SVP, starke Gegenmobilisierung: Weshalb die BGI scheiterte
