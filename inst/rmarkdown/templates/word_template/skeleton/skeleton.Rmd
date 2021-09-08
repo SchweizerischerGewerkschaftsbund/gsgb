@@ -44,6 +44,8 @@ flextable_sgb <- function(x){
   x <- flextable::fontsize(x,size = 10, part = "body")
   x <- flextable::align_text_col(x, align = "left", header = FALSE, footer = FALSE)
   x <- flextable::align_nottext_col(x, align = "right")
+  x <- flextable::font(x, fontname = "NimbusSanNov", part = "header")
+  x <- flextable::font(x, fontname = "NimbusSanNov", part = "body")
   return(x)
 }
 ```
