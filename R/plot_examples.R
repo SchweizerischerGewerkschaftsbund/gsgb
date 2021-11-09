@@ -13,7 +13,7 @@
 #' \dontrun{
 #' library(ggplot2)
 #' library(gsgb)
-#' theme_set(theme_sgb(base_size = 9))
+#' theme_set(theme_sgb())
 #'
 #' ## Linien, als jpeg speichern ----
 #' ggplot(kof) +
