@@ -1,7 +1,7 @@
 Package: gsgb
 Type: Package
 Title: Grafiken und Farben des Schweizerischen Gewerkschaftsbundes 
-Version: 0.1.2
+Version: 1.0.0
 Date: 2021-04-23
 Author: Kristina Schuepbach [aut, cre]
 Maintainer: Kristina Schuepbach <kristina.schuepbach@sgb.ch>
