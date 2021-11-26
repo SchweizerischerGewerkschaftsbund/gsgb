@@ -10,7 +10,7 @@ author: "David Gallusser"
 <!-- #### Heading 4 is for figure subtitles -->
 <!-- [For Links](http://www.sgb.ch) -->
 
-```{r setup, include=FALSE, warnings=FALSE}
+```{r setup, include=FALSE, warning=FALSE, results=FALSE, message=FALSE}
 #Load functions and set working directory
 source("I:/ABT1/_Datenablage/3_R-Skripte/SGB_data_prep_functions.R")
 library(gsgb)
@@ -19,7 +19,15 @@ library(flextable) #für Word-Tabellen im SGB-Layout
 library(officer)   #für Word-Tabellen im SGB-Layout
 
 #Set up general knitr options
-knitr::opts_chunk$set(echo = TRUE, warning=FALSE, message=FALSE, fig.width=3.5, fig.height=2.5, dpi=600)
+knitr::opts_chunk$set(echo = TRUE, 
+                      warning=FALSE, 
+                      message=FALSE, 
+                      fig.width=3.5, 
+                      fig.height=2.5, 
+                      dpi=600, 
+                      out.width = "50%",
+                      out.height = "50%",
+                      fig.align = "left")
 # Working directory in knitr (uncomment next line if desired)
 # knitr::opts_knit$set(root.dir="I:/ABT1/_Datenablage/3_R-Skripte/rmarkdown-Vorlagen")
 
@@ -39,6 +47,10 @@ flextable_sgb <- function(x){
   x <- hline_bottom(x, border=sb, part="body")
   return(x)
 }
+
+# Speicherort .rda-Dateien festlegen
+wd_rda  <- "I:/ABT1/_Datenablage/1_Aufbereitete_Daten/rda/"       
+wd_predictions <- "I:/ABT1/_Datenablage/5_Prognosen/rda/"
 ```
 
 # Wenig Unterstüzung ausserhalb der SVP, starke Gegenmobilisierung: Weshalb die BGI scheiterte
@@ -64,7 +76,7 @@ Plots aus externer Datei:
 
 ### Plot aus externer Datei
 #### (Plot Untertitel)
-![Quelle: Fisher, R. A. (1936)](plot.png) 
+![Quelle: Fisher, R. A. (1936)](plot.png){width=50%}
 
 Und noch eine Tabelle:
 

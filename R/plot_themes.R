@@ -90,6 +90,7 @@ theme_sgb <- function(base_size = 8, base_family = "",
       # legend
       legend.title =       ggplot2::element_blank(),  # no legend title
       legend.key =         ggplot2::element_rect(fill = "white", colour = NA), # match legend key to background
+      legend.key.size =    unit(1, "lines"), # smaller legend key
       legend.text =        ggplot2::element_text(size = ggplot2::rel(1)), # legend text size
       legend.position =    "top", # legend at the bottom of graph
       # -> this often has to be changed manually
