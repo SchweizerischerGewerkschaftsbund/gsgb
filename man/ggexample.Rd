@@ -5,7 +5,7 @@
 \title{Beispiele SGB-Grafiken}
 \description{
 Hier werden verschiedene Beispiele fuer typische SGB-Grafiken unter Verwendung des SGB-Themes
-und der SGB Farben beschrieben. Zudem zeigt es auch, wie Grafiken als jpeg, emf (vektorisierte
+und der SGB Farben beschrieben. Zudem zeigt es auch, wie Grafiken als png, emf (vektorisierte
 Grafiken fuer Word) oder als pdf gespeichert werden koennen.
 }
 \examples{
@@ -13,43 +13,65 @@ Grafiken fuer Word) oder als pdf gespeichert werden koennen.
 \dontrun{
 library(ggplot2)
 library(gsgb)
-theme_set(theme_sgb())
+theme_set(theme_sgb(base_size = 9))
 
-## Linien, als jpeg speichern ----
-ggplot(kof) +
-  geom_line(aes(x = time, y = value, colour = branche), size = 1) +
+## Linien ------------------------------------------------
+# z.B. Zeitreihen
+ggplot(kof, aes(x = time, y = value, colour = branche)) +
+  geom_line(size = 1) +
   geom_hline(yintercept = 0, size = 0.5) + # dickere Linie bei 0
   labs(x = "", y = "")
-ggsave("docs/lineplot.jpeg", wide = TRUE)
 
-
-## Linien mit 4 Variablen, im EMF-Format sichern ----
-# (emf ist ein Vektorformat, das von Word akzeptiert wird)
-devEMF::emf(file = "docs/lineplot2.emf", width = 6.2, height = 2.75) # width/height in inches
+# Farben & Zeitvariable anpassen
 ggplot(mangelindikator, aes(x = time, y = value, colour = label)) +
   geom_line(size = 1) +
   scale_x_date(date_breaks = "2 years", date_labels = "\%Y") +
+  scale_color_manual(values = rev(usecol(pal_sgb_dunkelblau))) +
   labs(x = "", y = "Mangelindikator")
-dev.off()
 
 
-## Saeulen (bar), als PDF speichern ----
-pdf("docs/barplot.pdf", width = 10, height = 7)
+## Saeulen ------------------------------------------------
+# geom_bar: y-Achse bildet Anzahl der Beobachtungen ab
+ggplot(mpg, aes(as.factor(year), fill = drv)) +
+  geom_bar(position = "dodge")
+
+# Farben anpassen
 ggplot(mpg, aes(as.factor(year), fill = drv)) +
   geom_bar(position = "dodge") +
-  labs(x = "", y = "")
-dev.off()
+  scale_fill_manual(values = usecol(c(SGBrot, SGBgelb, pal_sgb_dunkelblau[4])))
+
+# geom_col: y-Achse ist eine Variable aus den Daten
+ggplot(dplyr::filter(mangelindikator, time == "2020-01-01" | time == "2004-01-01")) +
+  geom_col(aes(x = as.factor(time), y = value, fill = label), position = "dodge") +
+  labs(x = "", y = "Mangelindikator")
 
 
-## Saeulen gestapelt (geom_bar) ----
-# plus Reihenfolge der Palette anpassen und Ausrichtung der x-Achsen-Labels
-ggplot(mpg, aes(manufacturer, fill = fl)) +
-  geom_bar(position = "stack") +
-  scale_fill_manual(values = rev(usecol(pal = pal_sgb_pref, n = 5)))
-ggsave("docs/stack_bar.jpeg", wide = TRUE)
+## Punkte ------------------------------------------------
+# Diskrete Farbvariable (hier Species)
+ggplot(iris, aes(Sepal.Width, Sepal.Length, color = Species)) +
+  geom_point()
+
+# Kontinuierliche Farbvariable (hier Sepal.Length)
+ggplot(iris, aes(Sepal.Width, Sepal.Length, color = Sepal.Length)) +
+  geom_point()
 
 
-## Kuchen-Diagramm, theme_sgb_minimal ----
+## Raster ------------------------------------------------
+# Diskrete Farbvariable
+df <- data.frame(
+  x = rep(c(2, 5, 7, 9, 12), 2),
+  y = rep(c(1, 2), each = 5),
+  z = factor(rep(1:5, each = 2)))
+ggplot(df, aes(x, y)) +
+  geom_tile(aes(fill = z)) +
+  scale_fill_manual(values = usecol(pal_sgb))
+
+# Kontinuierliche Farbvariable
+ggplot(faithfuld, aes(waiting, eruptions, fill = density)) +
+    geom_raster()
+
+
+## Kuchen-Diagramm ------------------------------------------------
 library(magrittr)
 df <- data.frame(group = c("Oberstes 1\%", "Uebrige 9\%", "Unterste 90\%"),
                  value = c(42, 33, 25))
@@ -71,40 +93,56 @@ ggplot(df, aes(x = "", y = prop, fill = group)) +
     legend.position = "right",
     legend.direction =   "vertical",
     legend.justification = c("right", "center"))
- ggsave("docs/pie_chart.jpeg", wide = TRUE)
 
 
-## Gestapeltes Flaechendiagramm ----
-df2 <- data.frame(
-  time = as.numeric(rep(seq(1, 5), each = 5)),
-  value = runif(25, 10, 100),
-  group = rep(LETTERS[1:5], times = 5))
-ggplot(df2, aes(x = time, y = value, fill = group)) +
-  geom_area() +
-  scale_fill_manual(values = usecol(pal = pal_sgb_rot, n = 5))
-ggsave("docs/stacked_area.jpeg", wide = TRUE)
-
-
-## Punkte discrete (Scatterplot) ----
-ggplot(iris, aes(Sepal.Width, Sepal.Length, color = Species)) +
-  geom_point(size = 2) +
+## Als png speichern ------------------------------------------------
+ggplot(kof) +
+  geom_line(aes(x = time, y = value, colour = branche), size = 1) +
+  geom_hline(yintercept = 0, size = 0.5) +
   labs(x = "", y = "")
-ggsave("docs/scatterplot.jpeg")
-ggsave("docs/scatterplot_wide.jpeg", wide = TRUE)
+ggsave("docs/lineplot.jpeg", wide = TRUE)
 
 
-## Punkte continous (Scatterplot mit gradient) ----
-ggplot(iris, aes(Sepal.Width, Sepal.Length, color = Sepal.Length)) +
-  geom_point(size = 2) +
-  scale_color_gradientn(colours = usecol(pal = pal_sgb_rot)) +
+## Als EMF speichern ------------------------------------------------
+# (emf ist ein Vektorformat, das von Word akzeptiert wird)
+devEMF::emf(file = "docs/lineplot2.emf", width = 6.2, height = 2.75) # width/height in inches
+ggplot(mangelindikator, aes(x = time, y = value, colour = label)) +
+  geom_line(size = 1) +
+  scale_x_date(date_breaks = "2 years", date_labels = "\%Y") +
+  labs(x = "", y = "Mangelindikator")
+dev.off()
+
+
+## Als PDF speichern --------------------------------------------
+# Eine Seite
+pdf("docs/barplot.pdf", height = 20/2.54, width = 27/2.54)
+ggplot(mpg, aes(as.factor(year), fill = drv)) +
+  geom_bar(position = "dodge") +
   labs(x = "", y = "")
-ggsave("docs/scatter_continous_wide.jpeg", wide = TRUE)
+dev.off()
+
+# Mehrere Seiten
+pdf("docs/barplot_mult.pdf", onefile = TRUE,
+    height = 20/2.54, width = 27/2.54,
+    paper = "a4r")
+ggplot(mpg, aes(as.factor(year), fill = drv)) +
+  geom_bar(position = "dodge") +
+  labs(x = "", y = "")
+ggplot(kof) +
+  geom_line(aes(x = time, y = value, colour = branche), size = 1) +
+  geom_hline(yintercept = 0, size = 0.5) +
+  labs(x = "", y = "")
+dev.off()
 
 }
-
 
 }
 \seealso{
+\code{\link{scale_color_discrete}} und \code{\link{scale_fill_discrete}} fuer diskrete Variablen.
+\code{\link{scale_color_gradient}} und \code{\link{scale_fill_gradient}} fuer kontinuerliche Variablen.
+\code{\link{usecol}} um komplexere Paletten zu mischen.
+\code{\link{seecol}} um alle SGB-Paletten und -Farben zu anzusehen.
+
 Other plot functions: 
 \code{\link{theme_sgb}()}
 }

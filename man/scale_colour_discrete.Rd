@@ -2,16 +2,44 @@
 % Please edit documentation in R/scales.R
 \name{scale_colour_discrete}
 \alias{scale_colour_discrete}
-\title{Default scale mit SGB-Farben}
+\alias{scale_color_discrete}
+\title{# Discrete fill/colour scales -----------------------------------
+Scale color discrete with SGB-colors}
 \usage{
 scale_colour_discrete(...)
 }
 \arguments{
-\item{...}{Beliebige Parameter die an die Funktion \code{scale_color_manual()} weitergegeben werden koennen.}
-}
-\value{
-see return of \code{scale_color_manual()}.
+\item{...}{parameters passed on to \code{scale_color_manual()}.}
 }
 \description{
-Default scale mit SGB-Farben
+Overwrites the default discrete color scale with SGB-palette \code{pal_sgb_pref}. To use
+another palette or custom colors, use \code{scale_color_manual()}.
 }
+\examples{
+\dontrun{
+library(ggplot2)
+library(gsgb)
+theme_set(theme_sgb(base_size = 9))
+
+ggplot(iris, aes(Sepal.Width, Sepal.Length, color = Species)) +
+  geom_point()
+
+# This gives the same:
+ggplot(iris, aes(Sepal.Width, Sepal.Length, color = Species)) +
+  geom_point() +
+  scale_color_discrete()
+
+# To change color scale:
+ggplot(iris, aes(Sepal.Width, Sepal.Length, color = Species)) +
+  geom_point() +
+  scale_color_manual(values = rev(usecol(pal_sgb_rot)))
+}
+
+}
+\seealso{
+Other colour scales: 
+\code{\link{scale_colour_gradient}()},
+\code{\link{scale_fill_discrete}()},
+\code{\link{scale_fill_gradient}()}
+}
+\concept{colour scales}

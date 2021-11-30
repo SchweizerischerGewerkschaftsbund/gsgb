@@ -2,16 +2,45 @@
 % Please edit documentation in R/scales.R
 \name{scale_fill_discrete}
 \alias{scale_fill_discrete}
-\title{Default scale mit SGB-Farben}
+\title{Scale fill discrete with SGB-colors}
 \usage{
 scale_fill_discrete(...)
 }
 \arguments{
-\item{...}{Beliebige Parameter die an die Funktion \code{scale_fill_manual()} weitergegeben werden koennen.}
-}
-\value{
-see return of \code{scale_fill_manual()}.
+\item{...}{parameters passed on to \code{scale_fill_manual()}.}
 }
 \description{
-Default scale mit SGB-Farben
+Overwrites the default discrete fill scale with SGB-palette \code{pal_sgb_pref}. To use
+another palette or custom colours, use \code{scale_fill_manual()}.
 }
+\examples{
+\dontrun{
+library(ggplot2)
+library(gsgb)
+theme_set(theme_sgb(base_size = 9))
+
+ggplot(mpg, aes(as.factor(year), fill = drv)) +
+  geom_bar(position = "dodge") +
+    labs(x = "", y = "")
+
+# This gives the same:
+ggplot(mpg, aes(as.factor(year), fill = drv)) +
+  geom_bar(position = "dodge") +
+    labs(x = "", y = "") +
+  scale_fill_discrete()
+
+# To change fill scale:
+ggplot(mpg, aes(as.factor(year), fill = drv)) +
+  geom_bar(position = "dodge") +
+    labs(x = "", y = "") +
+ scale_fill_manual(values = rev(usecol(pal_sgb_dunkelblau)))
+}
+
+}
+\seealso{
+Other colour scales: 
+\code{\link{scale_colour_discrete}()},
+\code{\link{scale_colour_gradient}()},
+\code{\link{scale_fill_gradient}()}
+}
+\concept{colour scales}

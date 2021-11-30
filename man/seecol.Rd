@@ -26,19 +26,12 @@ mehrere Paletten als list.
 Default: \code{pal = "sgb_all"}.
 
 Erkannte keywords sind:
-
 \enumerate{
-
   \item \code{"sgb_all"}: Alle Farbpaletten, die in \code{gsgb} definiert sind.
-
   \item \code{"sgb_basic"}: Alle SGB Standard-Farbpaletten.
-
   \item \code{"pair_all"}: Alle Farbpaletten mit paarweisen Farben.
-
   \item \code{"pref_all"}: Alle bevorzugten Farben und ihre Gradienten.
-
   \item \code{"grad_all"}:
-
 }
 
 \code{seecol} erkennt auch umgekehrte keywords (e.g., \code{"all_sgb"}) oder
@@ -90,14 +83,11 @@ der Farben einer Palette oder fuer den Vergleich mehrerer Farbpaletten.
 \enumerate{
 
 \item wenn \code{pal = "sgb_all"} (oder eine Liste mit mehreren Farbpaletten):
-
 Plottet visuelle Vektoren aller aktuellen Farbpaletten, um sie zu vergleichen.
 
 \item wenn mit \code{pal} eine bestimmte Farbpalette (oder ein Vektor mit mehreren Farben
 oder Farbpaletten) gewaehlt wird:
-
 Zeichnet die aktuelle Farbpalette und optionale Details zu ihren Farben.
-
 }
 }
 \examples{
