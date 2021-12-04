@@ -15,6 +15,7 @@
 # The default scale for discrete colours is scale_fill_discrete() which in turn defaults to
 # scale_fill_hue().
 
+
 #' # Discrete fill/colour scales -----------------------------------
 
 #' Scale color discrete with SGB-colors
