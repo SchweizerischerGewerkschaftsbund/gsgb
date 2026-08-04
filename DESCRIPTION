@@ -1,10 +1,10 @@
 Package: gsgb
 Type: Package
 Title: Grafiken und Farben des Schweizerischen Gewerkschaftsbundes 
-Version: 1.0.0
-Date: 2021-04-23
-Author: Kristina Schuepbach [aut, cre]
-Maintainer: Kristina Schuepbach <kristina.schuepbach@sgb.ch>
+Version: 1.0.1
+Date: 2026-08-04
+Author: Kristina Schuepbach [aut, cre], David Gallusser [aut]
+Maintainer: David Gallusser <david.gallusser@sgb.ch>
 Description: Das Package definiert grafische Elemente und Farben fuer die Erstellung von Grafiken in R fuer 
     Produkte des SGB. Die Farb-Paletten basieren auf dem corporate design des SGB. 
     Das Package 'gsgb' basiert auf dem Code des Packages 'unikn' von Hansjoerg Neth und Nico Gradwohl (<https://github.com/hneth/unikn>).

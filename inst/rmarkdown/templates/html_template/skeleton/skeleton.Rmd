@@ -12,11 +12,10 @@ author: "David Gallusser"
 
 ```{r setup, include=FALSE, warning=FALSE, results=FALSE, message=FALSE}
 #Load functions and set working directory
-source("I:/ABT1/_Datenablage/3_R-Skripte/SGB_data_prep_functions.R")
-library(gsgb)
+library(SGBTools)
 library(knitr)
-library(flextable) #fÃ¼r Word-Tabellen im SGB-Layout
-library(officer)   #fÃ¼r Word-Tabellen im SGB-Layout
+library(flextable) #für Word-Tabellen im SGB-Layout
+library(officer)   #für Word-Tabellen im SGB-Layout
 
 #Set up general knitr options
 knitr::opts_chunk$set(echo = TRUE, 
@@ -28,8 +27,9 @@ knitr::opts_chunk$set(echo = TRUE,
                       out.width = "50%",
                       out.height = "50%",
                       fig.align = "left")
+
 # Working directory in knitr (uncomment next line if desired)
-# knitr::opts_knit$set(root.dir="I:/ABT1/_Datenablage/3_R-Skripte/rmarkdown-Vorlagen")
+# knitr::opts_knit$set(root.dir="I:/2 Gewerkschaftspolitik/00 Datenablage/3_R-Skripte/rmarkdown-Vorlagen")
 
 # Set SGB ggplot theme
 th <- theme_sgb()
@@ -37,27 +37,33 @@ theme_set(th)
 
 # flextable SGB theme function
 flextable_sgb <- function(x){
-  x <- flextable(x)
-  x <- colformat_num(x, big.mark="'", digits=0)
-  x <- border_remove(x = x) 
-  x <- bold(x, part="header")
-  sb  <- fp_border(color="black", width=1)
-  x <- hline_top(x, border=sb, part="header" )
-  x <- hline_top(x, border=sb, part="body" )
-  x <- hline_bottom(x, border=sb, part="body")
+  x <- flextable::flextable(x)
+  x <- flextable::colformat_num(x, big.mark = "'", digits = 0)
+  x <- flextable::border_remove(x = x) 
+  x <- flextable::bold(x, part = "header")
+  sb  <- officer::fp_border(color = "black", width = 1)
+  x <- flextable::hline_top(x, border = sb, part = "header" )
+  x <- flextable::hline_top(x, border = sb, part = "body" )
+  x <- flextable::hline_bottom(x, border = sb, part = "body")
+  x <- flextable::fontsize(x,size = 10, part = "header")
+  x <- flextable::fontsize(x,size = 10, part = "body")
+  x <- flextable::align_text_col(x, align = "left", header = FALSE, footer = FALSE)
+  x <- flextable::align_nottext_col(x, align = "right")
+  x <- flextable::font(x, fontname = "NimbusSanNov", part = "header")
+  x <- flextable::font(x, fontname = "NimbusSanNov", part = "body")
   return(x)
 }
 
 # Speicherort .rda-Dateien festlegen
-wd_rda  <- "I:/ABT1/_Datenablage/1_Aufbereitete_Daten/rda/"       
-wd_predictions <- "I:/ABT1/_Datenablage/5_Prognosen/rda/"
+wd_rda  <- "I:/2 Gewerkschaftspolitik/00 Datenablage/1_Aufbereitete_Daten/rda/"       
+wd_predictions <- "I:/2 Gewerkschaftspolitik/00 Datenablage/5_Prognosen/rda/"
 ```
 
-# Wenig UnterstÃ¼zung ausserhalb der SVP, starke Gegenmobilisierung: Weshalb die BGI scheiterte
+# Wenig Unterstüzung ausserhalb der SVP, starke Gegenmobilisierung: Weshalb die BGI scheiterte
 
 ## Starker Kontrast zwischen BGI- und MEI-Resultat
 
-Im Gegensatz zur Masseneinwanderungsinitiative (MEI) fiel die Begrenzungsinitiative (BGI) auf breiter Front durch. FÃ¼r die BGI reichte es nur zu einem Ja-Anteil von 38.3 Prozent bei der StimmbevÃ¶lkerung und 3.5 zu-stimmenden StÃ¤nden (Schwyz, Glarus, Tessin und Appenzell-Innerrhoden). Dagegen sorgten 6 Jahren zuvor 50.3 Prozent der StimmbevÃ¶lkerung und 12.5 StÃ¤nde fÃ¼r eine knappe Annahme der MEI. 
+Im Gegensatz zur Masseneinwanderungsinitiative (MEI) fiel die Begrenzungsinitiative (BGI) auf breiter Front durch. FÃ¼r die BGI reichte es nur zu einem Ja-Anteil von 38.3 Prozent bei der Stimmbevölkerung und 3.5 zu-stimmenden Ständen (Schwyz, Glarus, Tessin und Appenzell-Innerrhoden). Dagegen sorgten 6 Jahren zuvor 50.3 Prozent der StimmbevÃ¶lkerung und 12.5 Stände für eine knappe Annahme der MEI. 
 
 Und hier ein Plot: 
 

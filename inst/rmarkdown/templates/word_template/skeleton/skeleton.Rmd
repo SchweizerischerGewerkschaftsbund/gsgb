@@ -4,7 +4,10 @@ date: "Bern, 5. Oktober 2020"
 author: "David Gallusser"
 output: 
   word_document:
-   reference_docx: I:/ABT1/_Datenablage/3_R-Skripte/rmarkdown-Vorlagen/reference-sgb.docx
+   toc: yes
+   toc_depth: 2
+   reference_docx: I:/2 Gewerkschaftspolitik/00 Datenablage/3_R-Skripte/rmarkdown-Vorlagen/reference-sgb.docx
+toc-title: "Inhalt"   
 ---
 
 <!-- # Heading 1 is for section titles -->
@@ -15,16 +18,15 @@ output:
 
 ```{r setup, include=FALSE, warning=FALSE, results=FALSE, message=FALSE}
 #Load functions and set working directory
-source("I:/ABT1/_Datenablage/3_R-Skripte/SGB_data_prep_functions.R")
-library(gsgb)
+library(SGBTools)
 library(knitr)
-library(flextable) #fÃ¼r Word-Tabellen im SGB-Layout
-library(officer)   #fÃ¼r Word-Tabellen im SGB-Layout
+library(flextable) #für Word-Tabellen im SGB-Layout
+library(officer)   #für Word-Tabellen im SGB-Layout
 
 #Set up general knitr options
 knitr::opts_chunk$set(echo = TRUE, warning=FALSE, message=FALSE, fig.width=3.5, fig.height=2.5, dpi=600)
 # Working directory in knitr (uncomment next line if desired)
-# knitr::opts_knit$set(root.dir="I:/ABT1/_Datenablage/3_R-Skripte/rmarkdown-Vorlagen")
+# knitr::opts_knit$set(root.dir="I:/2 Gewerkschaftspolitik/00 Datenablage/3_R-Skripte/rmarkdown-Vorlagen")
 
 # Set SGB ggplot theme
 th <- theme_sgb()
@@ -54,11 +56,11 @@ wd_rda  <- "I:/ABT1/_Datenablage/1_Aufbereitete_Daten/rda/"
 wd_predictions <- "I:/ABT1/_Datenablage/5_Prognosen/rda/"
 ```
 
-# Wenig UnterstÃ¼zung ausserhalb der SVP, starke Gegenmobilisierung: Weshalb die BGI scheiterte
+# Wenig Unterstüzung ausserhalb der SVP, starke Gegenmobilisierung: Weshalb die BGI scheiterte
 
 ## Starker Kontrast zwischen BGI- und MEI-Resultat
 
-Im Gegensatz zur Masseneinwanderungsinitiative (MEI) fiel die Begrenzungsinitiative (BGI) auf breiter Front durch. FÃ¼r die BGI reichte es nur zu einem Ja-Anteil von 38.3 Prozent bei der StimmbevÃ¶lkerung und 3.5 zu-stimmenden StÃ¤nden (Schwyz, Glarus, Tessin und Appenzell-Innerrhoden). Dagegen sorgten 6 Jahren zuvor 50.3 Prozent der StimmbevÃ¶lkerung und 12.5 StÃ¤nde fÃ¼r eine knappe Annahme der MEI. 
+Im Gegensatz zur Masseneinwanderungsinitiative (MEI) fiel die Begrenzungsinitiative (BGI) auf breiter Front durch. Für die BGI reichte es nur zu einem Ja-Anteil von 38.3 Prozent bei der Stimmbevölkerung und 3.5 zu-stimmenden StÃ¤nden (Schwyz, Glarus, Tessin und Appenzell-Innerrhoden). Dagegen sorgten 6 Jahren zuvor 50.3 Prozent der Stimmbevölkerung und 12.5 Stände für eine knappe Annahme der MEI. 
 
 Und hier ein Plot: 
 
